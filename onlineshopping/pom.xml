@@ -13,7 +13,8 @@
 	</properties>
 
 	<dependencies>
-		<!-- java ee api -->
+	<!--  link backend with frontend  -->
+				<!-- java ee api -->
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
