@@ -13,8 +13,13 @@
 	</properties>
 
 	<dependencies>
-	<!--  link backend with frontend  -->
-				<!-- java ee api -->
+		<!-- link backend with frontend -->
+		<dependency>
+			<groupId>com.niitmrt</groupId>
+			<artifactId>shoppingbackend</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<!-- java ee api -->
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>

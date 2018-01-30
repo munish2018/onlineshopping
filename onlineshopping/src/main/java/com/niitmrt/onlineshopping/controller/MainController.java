@@ -1,17 +1,25 @@
 package com.niitmrt.onlineshopping.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niitmrt.shoppingbackend.dao.CategoryDAO;
+
 @Controller
 public class MainController {
-
+	
+	@Autowired 
+	private CategoryDAO categoryDAO;
+	
 	@RequestMapping(value={"/"})
 	public ModelAndView vwindex()
 	{
 		ModelAndView obj = new ModelAndView();
 		obj.setViewName("index");
+		obj.addObject("categories",categoryDAO.list());
+				
 		return obj;
 	}
 
