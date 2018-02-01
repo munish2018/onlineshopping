@@ -55,6 +55,13 @@ public class MainController {
 		return obj;
 	}
 
+	@RequestMapping(value={"/admin"})
+	public ModelAndView vwadmin()
+	{
+		ModelAndView obj = new ModelAndView();
+		obj.setViewName("admin");
+		return obj;
+	}
 	
 }
  

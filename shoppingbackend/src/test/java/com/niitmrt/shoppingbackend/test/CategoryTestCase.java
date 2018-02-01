@@ -15,7 +15,7 @@ public class CategoryTestCase {
 
 	private static CategoryDAO categoryDAO;
 
-	private Category category;
+	//private Category category;
 
 	@BeforeClass
 	public static void init() {

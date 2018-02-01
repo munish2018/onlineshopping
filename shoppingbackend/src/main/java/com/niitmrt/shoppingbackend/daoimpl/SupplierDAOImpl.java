@@ -2,7 +2,7 @@ package com.niitmrt.shoppingbackend.daoimpl;
 
 import java.util.List;
 
-import javax.persistence.Query;
+//import javax.persistence.Query;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
