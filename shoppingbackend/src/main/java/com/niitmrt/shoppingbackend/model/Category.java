@@ -1,60 +1,49 @@
 package com.niitmrt.shoppingbackend.model;
 
-import javax.persistence.Column;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Category {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
-	private String  name;
-	private String  description;
-	@Column (name="image_url")
-	private String  imageURL;
-	@Column (name="is_active")
-	private boolean active=true;
+	private int cid;
+	private String  cname;
 	
+	@OneToMany(targetEntity=Product.class,fetch=FetchType.EAGER,mappedBy="category")	
+	private Set<Product> products=new HashSet<Product>(0);
 	
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public String getImageURL() {
-		return imageURL;
-	}
-	public void setImageURL(String imageURL) {
-		this.imageURL = imageURL;
-	}
-	public boolean isActive() {
-		return active;
-	}
-	public void setActive(boolean active) {
-		this.active = active;
-	}
 	@Override
 	public String toString() {
-		return "Category [id=" + id + ", name=" + name + ", description=" + description + ", imageURL=" + imageURL
-				+ ", active=" + active + "]";
+		return "Category [cid=" + cid + ", cname=" + cname +  "]";
+	}
+
+	public int getCid() {
+		return cid;
+	}
+
+	public void setCid(int cid) {
+		this.cid = cid;
+	}
+	public String getCname() {
+		return cname;
+	}
+
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+
+	public Set<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(Set<Product> products) {
+		this.products = products;
 	}
 	
 	

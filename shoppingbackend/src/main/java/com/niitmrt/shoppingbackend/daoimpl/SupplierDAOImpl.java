@@ -56,9 +56,9 @@ public class SupplierDAOImpl implements SupplierDAO {
 	}
 
 	@Override
-	public boolean delete(Supplier supplier) {
+	public boolean delete(int sid) {
 		try {
-			sessionFactory.getCurrentSession().delete(supplier);
+			sessionFactory.getCurrentSession().remove(get(sid));
 			return true;
 		} catch (Exception ex) {
 			ex.printStackTrace();

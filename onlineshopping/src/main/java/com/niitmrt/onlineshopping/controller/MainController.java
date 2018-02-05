@@ -18,8 +18,8 @@ public class MainController {
 	{
 		ModelAndView obj = new ModelAndView();
 		obj.setViewName("index");
-		obj.addObject("categories",categoryDAO.list());
-				
+		obj.addObject("title","Home");
+		obj.addObject("userClickHome",true);
 		return obj;
 	}
 
@@ -28,6 +28,8 @@ public class MainController {
 	{
 		ModelAndView obj = new ModelAndView();
 		obj.setViewName("register");
+		obj.addObject("title","Register");
+		obj.addObject("userClickRegister",true);
 		return obj;
 	}
 	
@@ -36,6 +38,8 @@ public class MainController {
 	{
 		ModelAndView obj = new ModelAndView();
 		obj.setViewName("signin");
+		obj.addObject("title","SignIn");
+		obj.addObject("userClickSignIn",true);
 		return obj;
 	}
 
@@ -44,6 +48,8 @@ public class MainController {
 	{
 		ModelAndView obj = new ModelAndView();
 		obj.setViewName("aboutus");
+		obj.addObject("title","AboutUs");
+		obj.addObject("userClickAboutUs",true);
 		return obj;
 	}
 	
@@ -52,6 +58,8 @@ public class MainController {
 	{
 		ModelAndView obj = new ModelAndView();
 		obj.setViewName("contactus");
+		obj.addObject("title","ContactUs");
+		obj.addObject("userClickContactUs",true);
 		return obj;
 	}
 
@@ -60,6 +68,8 @@ public class MainController {
 	{
 		ModelAndView obj = new ModelAndView();
 		obj.setViewName("admin");
+		obj.addObject("title","Admin");
+		obj.addObject("userClickAdmin",true);
 		return obj;
 	}
 	

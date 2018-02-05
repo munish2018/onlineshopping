@@ -51,7 +51,7 @@ public class SupplierTestCase {
 		  
 		  //delete a supplier
 		  supplier=supplierDAO.get(1);
-		  assertEquals("Successfully deleted  a supplier from  the table",true,supplierDAO.delete(supplier));
+		  assertEquals("Successfully deleted  a supplier from  the table",true,supplierDAO.delete(1));
 		  
 		 // fetching the list from supplier
 		 assertEquals("Successfully fetched  the supplier details from  the table",1 ,supplierDAO.list().size());

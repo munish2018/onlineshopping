@@ -1,4 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="req" value="${pageContext.request.contextPath}" />
+
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -74,34 +77,138 @@ body {
 		</div>
 
 		<div id="Product" class="tabcontent">
-			<%@ include file="product.jsp"%>
+			<c:if test="${userClickProduct==true}">
+				<h3>Welcome, Enter The Product Details</h3>
+				<form method="POST" action="">
+					<table align="center">
+						<tr>
+							<td>Product Name</td>
+							<td><input type=text name="pname" Class="form-control" /></td>
+						</tr>
+						<tr>
+							<td>Product Description</td>
+							<td><input type=text name="pdescription" Class="form-control" /></td>
+						</tr>
+						<tr>
+							<td>Unit Price</td>
+							<td><input type=text name="unitPrice" Class="form-control" /></td>
+						</tr>
+						<tr>
+							<td>Quantity</td>
+							<td><input type=text name="quantity" Class="form-control" /></td>
+						</tr>
+						<tr>
+							<td>Supplier Name</td>
+							<td><select>
+									<option value="">-----------Supplier--------</option>
+									<c:forEach items="${supps}" var="supps">
+										<option value=${supps.supid}>${supps.supname}</option>
+									</c:forEach>
+							</select></td>
+						</tr>
+						<tr>
+							<td>Category Name</td>
+							<td><select>
+									<option value="">-----------Category--------</option>
+									<c:forEach items="${cates}" var="cates">
+										<option value=${cates.cid}>${cates.cname}</option>
+									</c:forEach>
+							</select></td>
+						</tr>
+						
+						<div class="fileinput fileinput-new"  data-provides="fileinput">
+						<tr>
+							<td>Image</td>
+							<td><input class="form-control" type="file" name="pimage" accept="image/*"></td>
+						</tr>
+						</div>
+						<tr>
+							<td><input type="submit" value="Submit"
+								class="btn btn-sm btn-primary"
+								onClick="alert('Data Saved Sucessfully');" /></td>
+							<td><input type="reset" value="Cancel" /></td>
+						</tr>
+					</table>
+				</form>
+			</c:if>
 		</div>
 
 		<div id="Category" class="tabcontent">
-						<%@ include file="category.jsp"%>
+			<h3>Welcome, Enter The Category Details</h3>
+			<form action="<c:url value="/admin/catesave" />" method="post"
+				modelAttribute="cate">
+				<table border="1" width="600">
+					<tr>
+						<td>Category ID</td>
+						<td><input type=text name="cid" Class="form-control" /></td>
+					</tr>
+					<tr>
+						<td>Category Name</td>
+						<td><input type=text name="cname" Class="form-control" /></td>
+					</tr>
 
+					<tr align="center">
+						<td align="center"><input type="submit" value="Submit"
+							class="btn btn-sm btn-primary"
+							onClick="alert('Data Saved Sucessfully');" /></td>
+						<td align="center"><input type="reset" value="Reset"
+							class="btn btn-sm btn-primary" /></td>
+					</tr>
+				</table>
+			</form>
+			<br /> <br />
+			<h3>
+				<a href="${req}/admin/category">Display Category List</a>
+			</h3>
 		</div>
 
-		<div id="Supplier" class="tabcontent">
-						<%@ include file="supplier.jsp"%>
+		<div id="Supplier" class="tabcontent" align="center">
+			<h3>Welcome, Enter The Supplier Details</h3>
+			<form action="<c:url value="/admin/suppsave" />" method="post"
+				modelAttribute="supp">
+				<table border="1" width="600" align="center">
+
+					<tr>
+						<td>Supplier ID</td>
+						<td><input type=text name="supid" Class="form-control" /></td>
+					</tr>
+					<tr>
+						<td>Supplier Name</td>
+						<td><input type=text name="supname" Class="form-control" /></td>
+					</tr>
+
+					<tr align="center">
+						<td align="center"><input type="submit" value="Submit"
+							class="btn btn-sm btn-primary"
+							onClick="alert('Data Saved Sucessfully');" /></td>
+						<td align="center"><input type="reset" value="Reset"
+							class="btn btn-sm btn-primary" /></td>
+					</tr>
+				</table>
+			</form>
+			<br /> <br />
+			<h3>
+				<a href="${req}/admin/supplier">Display Supplier List</a>
+			</h3>
 		</div>
-	</div>
-	<script>
-		function openTab(evt, tabName) {
-			var i, tabcontent, tablinks;
-			tabcontent = document.getElementsByClassName("tabcontent");
-			for (i = 0; i < tabcontent.length; i++) {
-				tabcontent[i].style.display = "none";
+
+
+		<script>
+			function openTab(evt, tabName) {
+				var i, tabcontent, tablinks;
+				tabcontent = document.getElementsByClassName("tabcontent");
+				for (i = 0; i < tabcontent.length; i++) {
+					tabcontent[i].style.display = "none";
+				}
+				tablinks = document.getElementsByClassName("tablinks");
+				for (i = 0; i < tablinks.length; i++) {
+					tablinks[i].className = tablinks[i].className.replace(
+							" active", "");
+				}
+				document.getElementById(tabName).style.display = "block";
+				evt.currentTarget.className += " active";
 			}
-			tablinks = document.getElementsByClassName("tablinks");
-			for (i = 0; i < tablinks.length; i++) {
-				tablinks[i].className = tablinks[i].className.replace(
-						" active", "");
-			}
-			document.getElementById(tabName).style.display = "block";
-			evt.currentTarget.className += " active";
-		}
-	</script>
-	<%@ include file="footer.jsp"%>
+		</script>
+		<%@ include file="footer.jsp"%>
 </body>
 </html>

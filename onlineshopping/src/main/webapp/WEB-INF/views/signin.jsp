@@ -23,6 +23,7 @@
 	<%@ include file="header.jsp"%>
 	<div class="login" align="center">
 			<h1 class="loginheading">Login</h1>
+			<table align="center">
 			<form method="post" action="">
 				<div class="form-group nameInput has-feedback">
 					<label for="name">Username</label> <input type="text"
@@ -39,6 +40,7 @@
 					Still don't have an account? <a href="register">Register</a>
 				</p>
 			</form>
+			</table>
 			<!-- ©©© COPYRIGHT ©©©-->
 			<p class="text-muted loginbottomtext">©shop</p>
 		</div>

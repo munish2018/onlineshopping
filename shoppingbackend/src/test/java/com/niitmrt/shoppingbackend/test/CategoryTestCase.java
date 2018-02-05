@@ -80,30 +80,29 @@ public class CategoryTestCase {
 		
 		// adding category into category table
 		Category category = new Category();
-		category.setName("Television");
-		category.setDescription("description of TV");
-		category.setImageURL("cat1.png");
-		assertEquals("Successfully added a category into table",true,categoryDAO.add(category));
+		category.setCid(1);
+		category.setCname("Television");
+		
+				assertEquals("Successfully added a category into table",true,categoryDAO.add(category));
 		
 		category = new Category();
-		category.setName("Mobile");
-		category.setDescription("description of Mobile");
-		category.setImageURL("cat2.png");
+		category.setCid(2);
+		category.setCname("Mobile");
 		assertEquals("Successfully added a category into table",true,categoryDAO.add(category));
 		
 		
 		// fetching a single category from category table
 		category=categoryDAO.get(1);
-		assertEquals("Successfully fetched  a category from  the table","Television",category.getName());
+		assertEquals("Successfully fetched  a category from  the table","Television",category.getCname());
 		
 		//updating a category 
 		category=categoryDAO.get(1);
-		category.setName("TV");
+		category.setCname("TV");
 		assertEquals("Successfully updated  a category from  the table",true,categoryDAO.update(category));
 		
 		//delete a category
 		category=categoryDAO.get(1);
-		assertEquals("Successfully deleted  a category from  the table",true,categoryDAO.delete(category));
+		assertEquals("Successfully deleted  a category from  the table",true,categoryDAO.delete(1));
 		
 		// fetching the list from category
 		assertEquals("Successfully fetched  the categories from  the table",1,categoryDAO.list().size());

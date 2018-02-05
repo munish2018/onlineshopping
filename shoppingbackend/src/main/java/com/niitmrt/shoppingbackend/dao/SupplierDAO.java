@@ -10,6 +10,6 @@ public interface SupplierDAO {
 	List<Supplier> list();
 	boolean add(Supplier supplier);
 	boolean update(Supplier supplier);
-	boolean delete(Supplier supplier);
+	boolean delete(int sid);
 	
 }

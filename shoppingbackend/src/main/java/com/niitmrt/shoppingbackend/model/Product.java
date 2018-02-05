@@ -1,133 +1,143 @@
 package com.niitmrt.shoppingbackend.model;
 
 import java.io.Serializable;
-import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Component
 @Entity
 public class Product implements Serializable {
 
-	private static final long serialVersionUID = 1L;
 	// private fields
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	private String code;
+	private int pid;
 	@NotBlank(message = "Please enter the product name!")
-	private String name;
-	@NotBlank(message = "Please enter the brand name!")
-	private String brand;
+	private String pname;
 	@NotBlank(message = "Please enter the description!")
-	private String description;
+	private String pdescription;
 	@Column(name = "unit_price")
 	@Min(value = 1, message="Please select at least one value!")
 	private double unitPrice;
 	private int quantity;
 	@Column(name = "is_active")	
 	private boolean active;
-	@Column(name = "category_id")
-	private int categoryId;
-	@Column(name = "supplier_id")
-	private int supplierId;
-	private int purchases;
-	private int views;
-	public int getId() {
-		return id;
+	private String imageurl;
+	
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="cid")
+	private Category category;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="sid")
+	private Supplier supplier;
+	
+	@Transient
+	MultipartFile pimage;
+
+	public int getPid() {
+		return pid;
 	}
-	public void setId(int id) {
-		this.id = id;
+
+	public void setPid(int pid) {
+		this.pid = pid;
 	}
-	public String getCode() {
-		return code;
+
+	public String getPname() {
+		return pname;
 	}
-	public void setCode(String code) {
-		this.code = code;
+
+	public void setPname(String pname) {
+		this.pname = pname;
 	}
-	public String getName() {
-		return name;
+
+	public String getPdescription() {
+		return pdescription;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public void setPdescription(String pdescription) {
+		this.pdescription = pdescription;
 	}
-	public String getBrand() {
-		return brand;
-	}
-	public void setBrand(String brand) {
-		this.brand = brand;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
+
 	public double getUnitPrice() {
 		return unitPrice;
 	}
+
 	public void setUnitPrice(double unitPrice) {
 		this.unitPrice = unitPrice;
 	}
+
 	public int getQuantity() {
 		return quantity;
 	}
+
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+
 	public boolean isActive() {
 		return active;
 	}
+
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-	public int getCategoryId() {
-		return categoryId;
+
+	public Category getCategory() {
+		return category;
 	}
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
-	public int getSupplierId() {
-		return supplierId;
+
+	public Supplier getSupplier() {
+		return supplier;
 	}
-	public void setSupplierId(int supplierId) {
-		this.supplierId = supplierId;
+
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
 	}
-	public int getPurchases() {
-		return purchases;
+
+	public MultipartFile getPimage() {
+		return pimage;
 	}
-	public void setPurchases(int purchases) {
-		this.purchases = purchases;
+
+	public void setPimage(MultipartFile pimage) {
+		this.pimage = pimage;
 	}
-	public int getViews() {
-		return views;
+
+	public String getImageurl() {
+		return imageurl;
 	}
-	public void setViews(int views) {
-		this.views = views;
+
+	public void setImageurl(String imageurl) {
+		this.imageurl = imageurl;
 	}
-	
-	
-	
-	
-	public Product() {
-		this.code = "PRD" + UUID.randomUUID().toString().substring(26).toUpperCase();
-	}
+
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", code=" + code + ", name=" + name + ", brand=" + brand + ", description="
-				+ description + ", unitPrice=" + unitPrice + ", quantity=" + quantity + ", active=" + active
-				+ ", categoryId=" + categoryId + ", supplierId=" + supplierId + ", purchases=" + purchases + ", views="
-				+ views + "]";
+		return "Product [pid=" + pid + ", pname=" + pname + ", pdescription=" + pdescription + ", unitPrice="
+				+ unitPrice + ", quantity=" + quantity + ", active=" + active + ", imageurl=" + imageurl + ", category="
+				+ category + ", supplier=" + supplier + ", pimage=" + pimage + "]";
 	}
-		
+
+	
+	
 }
 
 
