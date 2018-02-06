@@ -25,16 +25,18 @@
 			<h1 class="loginheading">Login</h1>
 			<table align="center">
 			<form method="post" action="">
-				<div class="form-group nameInput has-feedback">
-					<label for="name">Username</label> <input type="text"
-						class="form-control" name="name" id="name"
-						placeholder="Please Enter User name...">
-				</div>
+				
 				<div class="form-group emailInput has-feedback">
 					<label for="email">Email</label> <input type="email"
 						class="form-control" name="email" id="email"
 						placeholder="Please Enter E Mail ID...">
 				</div>
+				<div class="form-group nameInput has-feedback">
+					<label for="name">Password</label> <input type="password"
+						class="form-control" name="password" id="password"
+						placeholder="Please Enter Password...">
+				</div>
+				
 				<button type="submit" class="btn btn-default">Submit</button>
 				<p class="loginbottomtext">
 					Still don't have an account? <a href="register">Register</a>

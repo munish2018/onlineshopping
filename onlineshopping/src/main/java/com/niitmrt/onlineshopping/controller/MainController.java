@@ -1,17 +1,26 @@
 package com.niitmrt.onlineshopping.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niitmrt.shoppingbackend.dao.CategoryDAO;
+import com.niitmrt.shoppingbackend.dao.UserDAO;
+import com.niitmrt.shoppingbackend.model.User;
 
 @Controller
 public class MainController {
 	
 	@Autowired 
 	private CategoryDAO categoryDAO;
+	
+	@Autowired 
+	private UserDAO userDAO;
 	
 	@RequestMapping(value={"/"})
 	public ModelAndView vwindex()
@@ -71,6 +80,15 @@ public class MainController {
 		obj.addObject("title","Admin");
 		obj.addObject("userClickAdmin",true);
 		return obj;
+	}
+	
+	@PostMapping("/userdetsave")
+	public String savesudet(@ModelAttribute("udet") User udet, HttpServletRequest request) {
+		System.out.println("  User Detail  save ");
+		System.out.println("user id :" + udet.getId());
+		System.out.println("user name :" + udet.getFirstName());
+		userDAO.add(udet);
+		return "redirect:/";
 	}
 	
 }
