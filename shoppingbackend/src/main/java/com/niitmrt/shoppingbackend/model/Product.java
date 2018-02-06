@@ -25,15 +25,12 @@ public class Product implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int pid;
-	@NotBlank(message = "Please enter the product name!")
 	private String pname;
-	@NotBlank(message = "Please enter the description!")
 	private String pdescription;
 	@Column(name = "unit_price")
-	@Min(value = 1, message="Please select at least one value!")
 	private double unitPrice;
 	private int quantity;
-	@Column(name = "is_active")	
+	@Column(name = "is_active", columnDefinition = "boolean default true")	
 	private boolean active;
 	private String imageurl;
 	

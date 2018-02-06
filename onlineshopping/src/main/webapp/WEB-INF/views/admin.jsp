@@ -79,7 +79,8 @@ body {
 		<div id="Product" class="tabcontent">
 			<c:if test="${userClickProduct==true}">
 				<h3>Welcome, Enter The Product Details</h3>
-				<form method="POST" action="">
+				<form action="<c:url value="/admin/productsave" />" method="post"
+				  enctype="multipart/form-data">
 					<table align="center">
 						<tr>
 							<td>Product Name</td>
@@ -99,7 +100,7 @@ body {
 						</tr>
 						<tr>
 							<td>Supplier Name</td>
-							<td><select>
+							<td><select name=supps>
 									<option value="">-----------Supplier--------</option>
 									<c:forEach items="${supps}" var="supps">
 										<option value=${supps.supid}>${supps.supname}</option>
@@ -108,7 +109,7 @@ body {
 						</tr>
 						<tr>
 							<td>Category Name</td>
-							<td><select>
+							<td><select name=cates>
 									<option value="">-----------Category--------</option>
 									<c:forEach items="${cates}" var="cates">
 										<option value=${cates.cid}>${cates.cname}</option>
@@ -119,7 +120,7 @@ body {
 						<div class="fileinput fileinput-new"  data-provides="fileinput">
 						<tr>
 							<td>Image</td>
-							<td><input class="form-control" type="file" name="pimage" accept="image/*"></td>
+							<td><input class="form-control" type="file" name="file" accept="image/*"></td>
 						</tr>
 						</div>
 						<tr>
@@ -130,6 +131,10 @@ body {
 						</tr>
 					</table>
 				</form>
+				<br /> <br />
+			<h3>
+				<a href="${req}/admin/product">Display Product List</a>
+			</h3>
 			</c:if>
 		</div>
 
