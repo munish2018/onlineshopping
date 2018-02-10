@@ -1,8 +1,8 @@
-package com.niitmrt.shoppingbackend.dao;
+package com.dao;
 
 import java.util.List;
 
-import com.niitmrt.shoppingbackend.model.Category;
+import com.model.Category;
 
 public interface CategoryDAO {
 

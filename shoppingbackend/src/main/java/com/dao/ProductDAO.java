@@ -1,8 +1,8 @@
-package com.niitmrt.shoppingbackend.dao;
+package com.dao;
 
 import java.util.List;
 
-import com.niitmrt.shoppingbackend.model.Product;
+import com.model.Product;
 
 public interface ProductDAO {
 

@@ -1,4 +1,4 @@
-package com.niitmrt.onlineshopping.controller;
+package com.controller;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -18,12 +18,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.niitmrt.shoppingbackend.dao.CategoryDAO;
-import com.niitmrt.shoppingbackend.dao.ProductDAO;
-import com.niitmrt.shoppingbackend.dao.SupplierDAO;
-import com.niitmrt.shoppingbackend.model.Category;
-import com.niitmrt.shoppingbackend.model.Product;
-import com.niitmrt.shoppingbackend.model.Supplier;
+import com.dao.CategoryDAO;
+import com.dao.ProductDAO;
+import com.dao.SupplierDAO;
+import com.model.Category;
+import com.model.Product;
+import com.model.Supplier;
 
 @Controller
 @RequestMapping("/admin")
@@ -204,6 +204,4 @@ public class AdminController {
 		p.delete(product);
 		return "redirect:/admin/product";
 	}
-	
-
 }

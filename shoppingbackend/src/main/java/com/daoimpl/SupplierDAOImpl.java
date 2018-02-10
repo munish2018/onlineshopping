@@ -1,4 +1,4 @@
-package com.niitmrt.shoppingbackend.daoimpl;
+package com.daoimpl;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.niitmrt.shoppingbackend.dao.SupplierDAO;
-import com.niitmrt.shoppingbackend.model.Supplier;
+import com.dao.SupplierDAO;
+import com.model.Supplier;
 
 @Repository("supplierDAO")
 @Transactional

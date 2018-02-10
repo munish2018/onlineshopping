@@ -1,4 +1,4 @@
-package com.niitmrt.shoppingbackend.model;
+package com.model;
 
 import java.util.HashSet;
 import java.util.Set;

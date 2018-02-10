@@ -10,9 +10,32 @@
 	<properties>
 		<javaee.version>8.0</javaee.version>
 		<spring.version>4.3.12.RELEASE</spring.version>
+		<spring.security.version>4.2.3.RELEASE</spring.security.version>
 	</properties>
 
 	<dependencies>
+	<!-- Spring security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+	
 		<!-- link backend with frontend -->
 		<dependency>
 			<groupId>com.niitmrt</groupId>
@@ -45,20 +68,17 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-		<!--  dependencies for file uploading multipart -->
-		<!-- Apache Commons FileUpload -->
-    <dependency>
-        <groupId>commons-fileupload</groupId>
-        <artifactId>commons-fileupload</artifactId>
-        <version>1.3.1</version>
-    </dependency>
-
-    <!-- Apache Commons IO -->
-    <dependency>
-        <groupId>commons-io</groupId>
-        <artifactId>commons-io</artifactId>
-        <version>2.4</version>
-    </dependency>
+		<!-- dependencies for file uploading multipart -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
 		
 	</dependencies>
 	<build>

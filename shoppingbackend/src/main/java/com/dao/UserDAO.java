@@ -1,6 +1,6 @@
-package com.niitmrt.shoppingbackend.dao;
+package com.dao;
 
-import com.niitmrt.shoppingbackend.model.User;
+import com.model.User;
 
 public interface UserDAO {
 

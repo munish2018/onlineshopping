@@ -1,7 +1,8 @@
-package com.niitmrt.shoppingbackend.daoimpl;
+package com.daoimpl;
 
-import com.niitmrt.shoppingbackend.dao.UserDAO;
-import com.niitmrt.shoppingbackend.model.User;
+import com.dao.UserDAO;
+import com.model.User;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.hibernate.SessionFactory;

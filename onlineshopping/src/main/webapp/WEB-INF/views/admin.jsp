@@ -1,6 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="req" value="${pageContext.request.contextPath}" />
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -100,16 +101,17 @@ body {
 						</tr>
 						<tr>
 							<td>Supplier Name</td>
-							<td><select name=supps>
+							<td><select name="supps.supid" id="supps">
 									<option value="">-----------Supplier--------</option>
 									<c:forEach items="${supps}" var="supps">
 										<option value=${supps.supid}>${supps.supname}</option>
 									</c:forEach>
 							</select></td>
 						</tr>
+							
 						<tr>
 							<td>Category Name</td>
-							<td><select name=cates>
+							<td><select path="category.cid"  id="cates">
 									<option value="">-----------Category--------</option>
 									<c:forEach items="${cates}" var="cates">
 										<option value=${cates.cid}>${cates.cname}</option>

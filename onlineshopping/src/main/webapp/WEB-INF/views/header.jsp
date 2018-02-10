@@ -1,4 +1,5 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <c:set var="req" value="${pageContext.request.contextPath}" />
 <spring:url value="/resources/css" var="css" />
 <link rel="stylesheet" href="${css}/header.css">
@@ -16,8 +17,11 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="${req}/">Home</a></li>
         <li class="active"><a href="${req}/register">Register</a></li>
-        <li class="active"><a href="${req}/signin">Sign In</a></li>
+        <li class="active"><a href="${req}/goToLogin">Sign In</a></li>
         <li class="active"><a href="${req}/admin">Admin</a></li>
+                  <sec:authorize access="hasAuthority('ADMIN')">
+        <li class="active"><a href="${req}/signout">Sign Out</a></li>
+        </sec:authorize>
         <!-- 
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>

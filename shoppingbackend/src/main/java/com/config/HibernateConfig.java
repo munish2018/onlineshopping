@@ -1,4 +1,4 @@
-package com.niitmrt.shoppingbackend.config;
+package com.config;
 
 import java.util.Properties;
 
@@ -28,7 +28,7 @@ public class HibernateConfig {
 	
 	
 		// dataSource bean will be available
-		@Bean
+		@Bean("dataSource")
 		public DataSource getDataSource() {
 			
 			BasicDataSource dataSource = new BasicDataSource();

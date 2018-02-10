@@ -1,4 +1,4 @@
-package com.niitmrt.onlineshopping.controller;
+package com.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -7,17 +7,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.niitmrt.shoppingbackend.dao.CategoryDAO;
-import com.niitmrt.shoppingbackend.dao.UserDAO;
-import com.niitmrt.shoppingbackend.model.User;
+import com.dao.CategoryDAO;
+import com.dao.UserDAO;
+import com.model.User;
 
 @Controller
 public class MainController {
-	
-	@Autowired 
-	private CategoryDAO categoryDAO;
 	
 	@Autowired 
 	private UserDAO userDAO;
@@ -42,16 +40,17 @@ public class MainController {
 		return obj;
 	}
 	
-	@RequestMapping(value={"/signin"})
-	public ModelAndView vwsignin()
+	@RequestMapping("/userLogged")
+	public String userLogged()
 	{
-		ModelAndView obj = new ModelAndView();
-		obj.setViewName("signin");
-		obj.addObject("title","SignIn");
-		obj.addObject("userClickSignIn",true);
-		return obj;
+		return "index";
 	}
-
+	
+	@RequestMapping("/goToLogin")
+	public String log()
+	{
+		return "signin";
+	}
 	@RequestMapping(value={"/aboutus"})
 	public ModelAndView vwaboutus()
 	{
@@ -89,6 +88,15 @@ public class MainController {
 		System.out.println("user name :" + udet.getFirstName());
 		userDAO.add(udet);
 		return "redirect:/";
+	}
+	@RequestMapping(value={"/access-denied"})
+	public ModelAndView accessDenied()
+	{
+		ModelAndView obj = new ModelAndView("error");
+		obj.addObject("title","403- Access Denied");
+		obj.addObject("errorTitle","Invalid User/Password");
+		obj.addObject("errorDescription","You are not Authorized to view this page !");
+		return obj;
 	}
 	
 }
