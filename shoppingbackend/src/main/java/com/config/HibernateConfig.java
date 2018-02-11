@@ -15,7 +15,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@ComponentScan(basePackages={"com.niitmrt.shoppingbackend.model"})
+@ComponentScan(basePackages={"com.model"})
 @EnableTransactionManagement
 public class HibernateConfig {
 
@@ -28,7 +28,7 @@ public class HibernateConfig {
 	
 	
 		// dataSource bean will be available
-		@Bean("dataSource")
+		@Bean(name="datasource")
 		public DataSource getDataSource() {
 			
 			BasicDataSource dataSource = new BasicDataSource();
@@ -54,7 +54,7 @@ public class HibernateConfig {
 			LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSource);
 			
 			builder.addProperties(getHibernateProperties());
-			builder.scanPackages("com.niitmrt.shoppingbackend.model");
+			builder.scanPackages("com.model");
 			System.out.println(" test4 ");
 			return builder.buildSessionFactory();
 			

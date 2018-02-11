@@ -2,6 +2,7 @@ package com.daoimpl;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -30,7 +31,6 @@ public class ProductDAOImpl implements ProductDAO {
 		}
 		return null;
 	}
-
 	@Override
 	public List<Product> list() {
 		return sessionFactory
@@ -39,6 +39,27 @@ public class ProductDAOImpl implements ProductDAO {
 						.getResultList();
 
 	}
+	@Override
+	public List<Product> listbycate(int cid)
+	{
+		Session session =sessionFactory.openSession();
+		List<Product> li=null;
+		session.beginTransaction();
+		li=session.createQuery("from Product where cid="+cid).list();
+		session.getTransaction().commit();
+		return li;
+	}
+	@Override
+	public List<Product> listbysupp(int sid)
+	{
+		Session session =sessionFactory.openSession();
+		List<Product> li=null;
+		session.beginTransaction();
+		li=session.createQuery("from Product where sid="+sid).list();
+		session.getTransaction().commit();
+		return li;
+	}
+	
 
 	@Override
 	public boolean add(Product product) {
@@ -70,16 +91,13 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public boolean delete(Product product) {
+	public boolean delete(int productId) {
 		try {
-			
-			product.setActive(false);
-			// call the update method
-			return this.update(product);
-		}
-		catch(Exception ex) {		
-			ex.printStackTrace();			
+			sessionFactory.getCurrentSession().remove(get(productId));
+			return true;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
 		}		
-		return false;			
 	}
 }

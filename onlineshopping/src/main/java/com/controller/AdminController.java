@@ -141,35 +141,62 @@ public class AdminController {
 		mv.addObject("cates", c.list());
 		return mv;
 	}
-
-	@RequestMapping(value="/productsave",method=RequestMethod.POST)
-	public String saveproduct( HttpServletRequest request,@RequestParam("file") MultipartFile file)
+	@RequestMapping(value="/productsave", method = RequestMethod.POST)
+	public ModelAndView addProduct(HttpServletRequest req,@RequestParam("file") MultipartFile file)
 	{	
 		Product product=new Product();
-		product.setPname(request.getParameter("pname"));
-		product.setPdescription(request.getParameter("pdescription"));
-		product.setUnitPrice(Double.valueOf(request.getParameter("unitPrice")));
-		product.setQuantity(Integer.parseInt(request.getParameter("quantity")));
-		String filepath=request.getSession().getServletContext().getRealPath("/");
-		String filename=file.getOriginalFilename();
-		product.setImageurl(filename);
-		p.add(product);
-		System.out.println("  Product save ");
-		System.out.println("product name :"+product.getPname());
-		System.out.println("product description :"+product.getPdescription());
-		System.out.println("product filename :"+filename);
-			try
-			{
-				byte[] imagebyte=file.getBytes();
-				BufferedOutputStream fos= new BufferedOutputStream(new FileOutputStream(filepath+"/resources/images/"+filename));
-				fos.write(imagebyte);
-				fos.close();
+		product.setPname(req.getParameter("pname"));
+		product.setPdescription(req.getParameter("pdescription"));
+		product.setQuantity(Integer.parseInt(req.getParameter("quantity")));
+		product.setUnitPrice(Double.valueOf(req.getParameter("unitPrice")));
+		product.setCid(Integer.parseInt(req.getParameter("cid")));
+		product.setSid(Integer.parseInt(req.getParameter("sid")));
+		
+		
+		String imgpath=req.getSession().getServletContext().getRealPath("/resources/images/");
+		String file_info=imgpath+file.getOriginalFilename()+".jpg";
+		if(!file.isEmpty()){
+			File f=new File(file_info);
+			try{
+			byte buff[]=file.getBytes();
+			BufferedOutputStream bs=new BufferedOutputStream(new FileOutputStream(f));
+			bs.write(buff);
+			bs.close();
+			product.setImageurl(file.getOriginalFilename());
+			p.add(product);
 			}
-			catch(Exception ex)
-			{
-				System.out.println("  error "+ex);
+			catch(Exception e){
+				System.out.println("Exception");
 			}
-			return "redirect:/admin";
+		}
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("redirect:/admin");
+		return mv;
+	}
+	@RequestMapping(value="/productupdate", method = RequestMethod.POST)
+	public String editprod(@ModelAttribute("product") Product product, HttpServletRequest request,@RequestParam("file") MultipartFile file) {
+		System.out.println("  Product  update ");
+		System.out.println("Product id :" + product.getPid());
+		System.out.println("Product name :" + product.getPname());
+		product.setCid(Integer.parseInt(request.getParameter("cid")));
+		product.setPid(Integer.parseInt(request.getParameter("pid")));
+		String imgpath=request.getSession().getServletContext().getRealPath("/resources/images/");
+		String file_info=imgpath+file.getOriginalFilename()+".jpg";
+		if(!file.isEmpty()){
+			File f=new File(file_info);
+			try{
+			byte buff[]=file.getBytes();
+			BufferedOutputStream bs=new BufferedOutputStream(new FileOutputStream(f));
+			bs.write(buff);
+			bs.close();
+			product.setImageurl(file.getOriginalFilename());
+			p.update(product);
+			}
+			catch(Exception e){
+				System.out.println("Exception");
+			}
+		}
+		return "redirect:/admin/product";
 	}
 	
 	@RequestMapping(value = "/product", method = RequestMethod.GET)
@@ -178,6 +205,8 @@ public class AdminController {
 		mv.addObject("title", "Product");
 		mv.addObject("userClickProduct", true);
 		mv.addObject("products", p.list());
+		mv.addObject("supps", s.list());
+		mv.addObject("cates", c.list());
 		mv.addObject("product", new Product());
 		return mv;
 	}
@@ -185,23 +214,17 @@ public class AdminController {
 	public ModelAndView getprodbyid(@PathVariable("pid") int pid) {
 		ModelAndView mv = new ModelAndView("product");
 		mv.addObject("product", p.get(pid));
+		mv.addObject("supps", s.list());
+		mv.addObject("cates", c.list());
 		mv.addObject("products", p.list());
 		return mv;
 	}
-	@PostMapping("/productupdate")
-	public String editprod(@ModelAttribute("product") Product product, HttpServletRequest request) {
-		System.out.println("  Product  update ");
-		System.out.println("Product id :" + product.getPid());
-		System.out.println("Product name :" + product.getPname());
-		p.update(product);
-		return "redirect:/admin/product";
-	}
-	@RequestMapping(value="/deleteproduct",method = RequestMethod.GET)
-	public String delprod(@ModelAttribute("product") Product product, HttpServletRequest request) {
-		System.out.println("  Product  update ");
-		System.out.println("Product id :" + product.getPid());
-		System.out.println("Product name :" + product.getPname());
-		p.delete(product);
+	
+	@RequestMapping(value = "/deleteproduct/{pid}")
+	public String deleteproduct(@PathVariable("pid") int pid) {
+		System.out.println(" product Delete ");
+		System.out.println("pid " + pid);
+		p.delete(pid);
 		return "redirect:/admin/product";
 	}
 }

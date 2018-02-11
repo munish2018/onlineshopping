@@ -32,10 +32,10 @@
 			</td>
 			</tr>
 			</table>
-			<form action="${pageContext.request.contextPath }/goToLogin" class="form-signin" method="post">
+			<form action="${pageContext.request.contextPath }/login" class="form-signin" method="post">
 					<div class="form-group emailInput has-feedback">
 					<label for="email">Email</label> 
-					<input type="email"	class="form-control" name="usernanme" id="username"
+					<input type="email"	class="form-control" name="username" id="username"
 						placeholder="Please Enter E Mail ID...">
 				</div>
 				<div class="form-group nameInput has-feedback">

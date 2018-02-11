@@ -15,8 +15,8 @@ public class Category {
 	private int cid;
 	private String  cname;
 	
-	@OneToMany(targetEntity=Product.class,fetch=FetchType.EAGER,mappedBy="category")	
-	private Set<Product> products=new HashSet<Product>(0);
+	//@OneToMany(targetEntity=Product.class,fetch=FetchType.EAGER,mappedBy="category")	
+	//private Set<Product> products=new HashSet<Product>(0);
 	
 	@Override
 	public String toString() {
@@ -37,14 +37,4 @@ public class Category {
 	public void setCname(String cname) {
 		this.cname = cname;
 	}
-
-	public Set<Product> getProducts() {
-		return products;
-	}
-
-	public void setProducts(Set<Product> products) {
-		this.products = products;
-	}
-	
-	
 }

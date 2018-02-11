@@ -15,8 +15,8 @@ public class Supplier {
 	private int supid;
 	private String  supname;
 	
-	@OneToMany(targetEntity=Product.class,fetch=FetchType.EAGER,mappedBy="supplier")	
-	private Set<Product> products=new HashSet<Product>(0);
+	//@OneToMany(targetEntity=Product.class,fetch=FetchType.EAGER,mappedBy="supplier")	
+	//private Set<Product> products=new HashSet<Product>(0);
 	
 	public int getSupid() {
 		return supid;
@@ -30,12 +30,4 @@ public class Supplier {
 	public void setSupname(String supname) {
 		this.supname = supname;
 	}
-	public Set<Product> getProducts() {
-		return products;
-	}
-	public void setProducts(Set<Product> products) {
-		this.products = products;
-	}
-	
-	
 }

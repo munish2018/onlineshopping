@@ -30,18 +30,19 @@ public class Product implements Serializable {
 	@Column(name = "unit_price")
 	private double unitPrice;
 	private int quantity;
-	@Column(name = "is_active", columnDefinition = "boolean default true")	
-	private boolean active;
+	@Column(name = "is_active")	
+	private boolean active=true;
 	private String imageurl;
+	private int cid;
+	private int sid;
 	
+	//@ManyToOne(fetch=FetchType.EAGER)
+	//@JoinColumn(name="cid")
+	//private Category category;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="cid")
-	private Category category;
-	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="sid")
-	private Supplier supplier;
+	//@ManyToOne(fetch=FetchType.EAGER)
+	//@JoinColumn(name="sid")
+	//private Supplier supplier;
 	
 	@Transient
 	MultipartFile pimage;
@@ -94,22 +95,6 @@ public class Product implements Serializable {
 		this.active = active;
 	}
 
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-
-	public Supplier getSupplier() {
-		return supplier;
-	}
-
-	public void setSupplier(Supplier supplier) {
-		this.supplier = supplier;
-	}
-
 	public MultipartFile getPimage() {
 		return pimage;
 	}
@@ -126,15 +111,19 @@ public class Product implements Serializable {
 		this.imageurl = imageurl;
 	}
 
-	@Override
-	public String toString() {
-		return "Product [pid=" + pid + ", pname=" + pname + ", pdescription=" + pdescription + ", unitPrice="
-				+ unitPrice + ", quantity=" + quantity + ", active=" + active + ", imageurl=" + imageurl + ", category="
-				+ category + ", supplier=" + supplier + ", pimage=" + pimage + "]";
+	public int getCid() {
+		return cid;
 	}
 
-	
-	
+	public void setCid(int cid) {
+		this.cid = cid;
+	}
+
+	public int getSid() {
+		return sid;
+	}
+
+	public void setSid(int sid) {
+		this.sid = sid;
+	}
 }
-
-

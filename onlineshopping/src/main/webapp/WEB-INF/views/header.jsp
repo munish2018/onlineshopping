@@ -16,12 +16,11 @@
        <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="${req}/">Home</a></li>
-        <li class="active"><a href="${req}/register">Register</a></li>
-        <li class="active"><a href="${req}/goToLogin">Sign In</a></li>
         <li class="active"><a href="${req}/admin">Admin</a></li>
-                  <sec:authorize access="hasAuthority('ADMIN')">
-        <li class="active"><a href="${req}/signout">Sign Out</a></li>
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
+        <li class="active"><a href="${req}/admin/product">Manage Products</a></li>
         </sec:authorize>
+        <li class="active"><a href="${req}/listproduct">List Products</a></li>
         <!-- 
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
@@ -35,12 +34,11 @@
         <li><a href="#">Page 3</a></li>
          -->
       </ul>
-      <!-- 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li class="active"><a href="${req}/register">Sign Up</a></li>
+        <li><a href="${req}/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
       </ul>
-       -->
-    </div>
+      </div>
   </div>
  </nav>

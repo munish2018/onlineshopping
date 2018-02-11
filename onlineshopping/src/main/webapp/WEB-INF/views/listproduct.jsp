@@ -1,6 +1,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="req" value="${pageContext.request.contextPath}" />
+<c:set var="f" value="file:///E:/DT jAN 18 TO APR 18/onlineshopping/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/onlineshopping/resources/images" />
+
 
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -27,36 +29,38 @@
 	<%@ include file="header.jsp"%>
 	<div class="panel pannel-default">
 		<div class="panel-header" align="center">
-			<h1>Product Form</h1>
+			<h1>Product Detail</h1>
 		</div>
 
 		<table class="table table-striped" border="1" align="center">
 			<tr>
 				<th>Product Id</th>
 				<th>Product Name</th>
+				<th>Description</th>
+				<th>Image</th>
 				<th>&#160;</th>
 			</tr>
 			<c:forEach items="${products}" var="products">
 				<tr>
 					<td>${products.pid}</td>
 					<td>${products.pname}</td>
-					<td><a href="${req}/admin/product/${products.pid}"
-						class="btn btn-sm btn-primary">View</a>&#160; <a
-						href="${req}/admin/deleteproduct/${products.pid}"
-						class="btn btn-sm btn-primary">Delete</a></td>
+					<td>${products.pdescription}</td>
+					<td><img src="${f}/${products.imageurl}.jpg" width=40 height=40/></td>
+					<td><a href="${req}/listproduct/${products.pid}"
+						class="btn btn-sm btn-primary">View</a>&#160;</td>
 				</tr>
 			</c:forEach>
 		</table>
 	</div>
 	<div>
-		<form action="<c:url value="/admin/productupdate" />" method="post"
-			modelAttribute="product" enctype="multipart/form-data">
+		<form  method="post" modelAttribute="product" enctype="multipart/form-data">
 			<table border="1" width="600">
 				<tr>
 					<td>Product ID</td>
 					<td><input type=text name="pid" value="${product.pid}"
 						Class="form-control" /></td>
-				</tr>
+					<td rowspan=5><img src="${f}/${product.imageurl}.jpg" width=400 height=400 /></td>
+					</tr>
 				<tr>
 					<td>Product Name</td>
 					<td><input type=text name="pname" value="${product.pname}"
@@ -77,40 +81,9 @@
 					<td><input type=text name="unitPrice"
 						value="${product.unitPrice}" Class="form-control" /></td>
 				</tr>
-				<tr>
-					<td>Supplier Name</td>
-					<td><select name="sid" id="sid">
-							<option value="">-----------Supplier--------</option>
-							<c:forEach items="${supps}" var="supps">
-								<option value=${supps.supid}>${supps.supname}</option>
-							</c:forEach>
-					</select></td>
-				</tr>
-				<tr>
-					<td>Category Name</td>
-					<td><select name="cid" id="cid">
-							<option value="">-----------Category--------</option>
-							<c:forEach items="${cates}" var="cates">
-								<option value=${cates.cid}>${cates.cname}</option>
-							</c:forEach>
-					</select></td>
-				</tr>
-				<div class="fileinput fileinput-new" data-provides="fileinput">
-					<tr>
-						<td>Image</td>
-						<td><input class="form-control" type="file" name="file"
-							accept="image/*"></td>
-					</tr>
-				<tr>
-					<td>Product Image</td>
-					<td><input type=text name="imageurl"
-						value="${product.imageurl}" Class="form-control" /></td>
-				</tr>
-				</div>
 				<tr align="center">
 					<td align="center"><input type="submit" value="Submit"
-						class="btn btn-sm btn-primary"
-						onClick="alert('Data Updated Sucessfully');" /></td>
+						class="btn btn-sm btn-primary"/></td>
 					<td align="center"><input type="reset" value="Reset"
 						class="btn btn-sm btn-primary" /></td>
 				</tr>

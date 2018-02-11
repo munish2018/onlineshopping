@@ -7,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1> ${title} </h1>
-<h2> ${errorTitle} </h2>
-<h3> ${errorDescription} </h3>
+<h1>  Un Authorized Access</h1>
 </body>
 </html>

@@ -5,13 +5,18 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dao.CategoryDAO;
+import com.dao.ProductDAO;
+import com.dao.SupplierDAO;
 import com.dao.UserDAO;
+import com.model.Product;
 import com.model.User;
 
 @Controller
@@ -19,6 +24,15 @@ public class MainController {
 	
 	@Autowired 
 	private UserDAO userDAO;
+	
+	@Autowired
+	SupplierDAO s;
+
+	@Autowired
+	CategoryDAO c;
+
+	@Autowired
+	ProductDAO p;
 	
 	@RequestMapping(value={"/"})
 	public ModelAndView vwindex()
@@ -46,10 +60,16 @@ public class MainController {
 		return "index";
 	}
 	
-	@RequestMapping("/goToLogin")
+	@RequestMapping("/login")
 	public String log()
 	{
-		return "signin";
+		return "login";
+	}
+	
+	@RequestMapping("/error")
+	public String err()
+	{
+		return "error";
 	}
 	@RequestMapping(value={"/aboutus"})
 	public ModelAndView vwaboutus()
@@ -97,6 +117,27 @@ public class MainController {
 		obj.addObject("errorTitle","Invalid User/Password");
 		obj.addObject("errorDescription","You are not Authorized to view this page !");
 		return obj;
+	}
+	
+	@RequestMapping(value = "/listproduct", method = RequestMethod.GET)
+	public ModelAndView listprod() {
+		ModelAndView mv = new ModelAndView("listproduct");
+		mv.addObject("title", "Product");
+		mv.addObject("userClicklistProduct", true);
+		mv.addObject("products", p.list());
+		mv.addObject("supps", s.list());
+		mv.addObject("cates", c.list());
+		mv.addObject("product", new Product());
+		return mv;
+	}
+	@RequestMapping(value = "/listproduct/{pid}", method = RequestMethod.GET)
+	public ModelAndView getprodbyid(@PathVariable("pid") int pid) {
+		ModelAndView mv = new ModelAndView("listproduct");
+		mv.addObject("product", p.get(pid));
+		mv.addObject("supps", s.list());
+		mv.addObject("cates", c.list());
+		mv.addObject("products", p.list());
+		return mv;
 	}
 	
 }

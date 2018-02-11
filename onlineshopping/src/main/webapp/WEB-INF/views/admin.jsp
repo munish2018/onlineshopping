@@ -79,7 +79,7 @@ body {
 
 		<div id="Product" class="tabcontent">
 			<c:if test="${userClickProduct==true}">
-				<h3>Welcome, Enter The Product Details</h3>
+		<h3>Welcome, Enter The Product Details</h3>
 				<form action="<c:url value="/admin/productsave" />" method="post"
 				  enctype="multipart/form-data">
 					<table align="center">
@@ -101,7 +101,7 @@ body {
 						</tr>
 						<tr>
 							<td>Supplier Name</td>
-							<td><select name="supps.supid" id="supps">
+							<td><select name="sid" id="sid">
 									<option value="">-----------Supplier--------</option>
 									<c:forEach items="${supps}" var="supps">
 										<option value=${supps.supid}>${supps.supname}</option>
@@ -111,7 +111,7 @@ body {
 							
 						<tr>
 							<td>Category Name</td>
-							<td><select path="category.cid"  id="cates">
+							<td><select   name="cid" id="cid" >
 									<option value="">-----------Category--------</option>
 									<c:forEach items="${cates}" var="cates">
 										<option value=${cates.cid}>${cates.cname}</option>
@@ -133,10 +133,9 @@ body {
 						</tr>
 					</table>
 				</form>
-				<br /> <br />
-			<h3>
-				<a href="${req}/admin/product">Display Product List</a>
-			</h3>
+				<br/> <br/>
+				<a href="${req}/admin/product">Manage Product Detail</a>
+				</h3>
 			</c:if>
 		</div>
 
@@ -165,7 +164,7 @@ body {
 			</form>
 			<br /> <br />
 			<h3>
-				<a href="${req}/admin/category">Display Category List</a>
+				<a href="${req}/admin/category">Manage Category Detail</a>
 			</h3>
 		</div>
 
@@ -195,7 +194,7 @@ body {
 			</form>
 			<br /> <br />
 			<h3>
-				<a href="${req}/admin/supplier">Display Supplier List</a>
+				<a href="${req}/admin/supplier">Manage Supplier Detail</a>
 			</h3>
 		</div>
 
