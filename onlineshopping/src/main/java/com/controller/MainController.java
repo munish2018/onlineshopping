@@ -3,13 +3,14 @@ package com.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dao.CategoryDAO;
@@ -40,6 +41,7 @@ public class MainController {
 		ModelAndView obj = new ModelAndView();
 		obj.setViewName("index");
 		obj.addObject("title","Home");
+		obj.addObject("cates", c.list());
 		obj.addObject("userClickHome",true);
 		return obj;
 	}
@@ -63,7 +65,11 @@ public class MainController {
 	@RequestMapping("/login")
 	public String log()
 	{
-		return "login";
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	      String name = auth.getName(); //get logged in username
+	      ModelAndView mv =new ModelAndView();
+	      mv.addObject("username", name);
+	    		return "login";
 	}
 	
 	@RequestMapping("/error")
@@ -130,11 +136,20 @@ public class MainController {
 		mv.addObject("product", new Product());
 		return mv;
 	}
-	@RequestMapping(value = "/listproduct/{pid}", method = RequestMethod.GET)
-	public ModelAndView getprodbyid(@PathVariable("pid") int pid) {
+	@RequestMapping(value = "/listproduct/{cid}", method = RequestMethod.GET)
+	public ModelAndView getprodbycate(@PathVariable("cid") int cid) {
 		ModelAndView mv = new ModelAndView("listproduct");
+		mv.addObject("products", p.listbycate(cid));
+		mv.addObject("cates", c.list());
+		return mv;
+	}
+	
+	@RequestMapping(value = "/listproductbypid/{pid}", method = RequestMethod.GET)
+	public ModelAndView getprodbyid(@PathVariable("pid") int pid) {
+		ModelAndView mv = new ModelAndView("dispproduct");
 		mv.addObject("product", p.get(pid));
 		mv.addObject("supps", s.list());
+		mv.addObject("cates", c.list());
 		mv.addObject("cates", c.list());
 		mv.addObject("products", p.list());
 		return mv;

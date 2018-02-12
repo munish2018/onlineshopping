@@ -20,7 +20,11 @@
 <link href="favicon.ico" rel="shortcut icon" type="${images}/x-icon" />
 </head>
 <body>
-	<%@ include file="header.jsp"%>
+ 	<%@ include file="header.jsp"%>
+	<% 
+	String un="${username}";
+	session.setAttribute("username",un);
+	%>
 	<div class="login" align="center">
 			<h1 class="loginheading">Login</h1>
 			<table align="center">

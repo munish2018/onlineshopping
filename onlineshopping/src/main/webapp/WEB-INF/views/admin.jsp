@@ -70,13 +70,15 @@ body {
 </head>
 <body>
 	<%@ include file="header.jsp"%>
-	<div class="container" align="center">
+	<div class="panel pannel-default">
+		<div class="panel-header" align="center">
+			<h1>Product Detail</h1>
+		</div>
 		<div class="tab" align="center">
 			<button class="tablinks" onclick="openTab(event, 'Product')">Product</button>
 			<button class="tablinks" onclick="openTab(event, 'Category')">Category</button>
 			<button class="tablinks" onclick="openTab(event, 'Supplier')">Supplier</button>
 		</div>
-
 		<div id="Product" class="tabcontent">
 			<c:if test="${userClickProduct==true}">
 		<h3>Welcome, Enter The Product Details</h3>
@@ -134,8 +136,9 @@ body {
 					</table>
 				</form>
 				<br/> <br/>
-				<a href="${req}/admin/product">Manage Product Detail</a>
-				</h3>
+				<center><h3><a href="${req}/admin/product">Manage Product Detail</a>
+				</h3></center>
+				<br/><br/><br/>
 			</c:if>
 		</div>
 
@@ -163,9 +166,12 @@ body {
 				</table>
 			</form>
 			<br /> <br />
+			<center>
 			<h3>
 				<a href="${req}/admin/category">Manage Category Detail</a>
 			</h3>
+			</center>
+			<br/><br/><br/>
 		</div>
 
 		<div id="Supplier" class="tabcontent" align="center">
@@ -193,11 +199,15 @@ body {
 				</table>
 			</form>
 			<br /> <br />
-			<h3>
+			<center>
+						<h3>
 				<a href="${req}/admin/supplier">Manage Supplier Detail</a>
 			</h3>
+			</center>
+			<br/><br/><br/>
+			
 		</div>
-
+</div>
 
 		<script>
 			function openTab(evt, tabName) {

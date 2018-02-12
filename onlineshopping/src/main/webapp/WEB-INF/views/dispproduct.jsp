@@ -23,37 +23,49 @@
 <script src="${js}/jquery.min.js"></script>
 <script src="${js}/bootstrap.min.js"></script>
 <script src="${js}/registration.js"></script>
-
 </head>
 <body>
-	<%@ include file="header.jsp"%>
+<%@ include file="header.jsp"%>
 	<div class="panel pannel-default">
 		<div class="panel-header" align="center">
 			<h1>Product Detail</h1>
 		</div>
-
-		<table class="table table-striped" border="1" align="center">
-			<tr>
-				<th>Product Id</th>
-				<th>Product Name</th>
-				<th>Description</th>
-				<th>Image</th>
-				<th>&#160;</th>
-			</tr>
-			<c:forEach items="${products}" var="products">
+<form  method="post" modelAttribute="product" enctype="multipart/form-data">
+			<table border="1" width="600">
 				<tr>
-					<td>${products.pid}</td>
-					<td>${products.pname}</td>
-					<td>${products.pdescription}</td>
-					<td><img src="${f}/${products.imageurl}.jpg" width=40 height=40/></td>
-					<td><a href="${req}/listproductbypid/${products.pid}"
-						class="btn btn-sm btn-primary">View</a>&#160;</td>
+				<td rowspan=5><img src="${f}/${product.imageurl}.jpg" width=400 height=400 /></td>
+					<td>Product ID</td>
+					<td><input type=text name="pid" value="${product.pid}"
+						Class="form-control" /></td>
+										</tr>
+				<tr>
+					<td>Product Name</td>
+					<td><input type=text name="pname" value="${product.pname}"
+						Class="form-control" /></td>
 				</tr>
-			</c:forEach>
-		</table>
+				<tr>
+					<td>Product Description</td>
+					<td><input type=text name="pdescription"
+						value="${product.pdescription}" Class="form-control" /></td>
+				</tr>
+				<tr>
+					<td>Product Quantity</td>
+					<td><input type=text name="quantity"
+						value="${product.quantity}" Class="form-control" /></td>
+				</tr>
+				<tr>
+					<td>Product Unit price</td>
+					<td><input type=text name="unitPrice"
+						value="${product.unitPrice}" Class="form-control" /></td>
+				</tr>
+				<tr align="center">
+					<td colspan="2" align="center"><input type="submit" value="Add To Cart"
+						class="btn btn-sm btn-primary"/></td>
+									</tr>
+			</table>
+		</form>
+		<br/><br/><br/><br/><br/>
 	</div>
-	<div>
-		
-	<%@ include file="footer.jsp"%>
+<%@ include file="footer.jsp"%>
 </body>
 </html>

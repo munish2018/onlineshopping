@@ -20,16 +20,17 @@
         <sec:authorize access="hasRole('ROLE_ADMIN')">
         <li class="active"><a href="${req}/admin/product">Manage Products</a></li>
         </sec:authorize>
-        <li class="active"><a href="${req}/listproduct">List Products</a></li>
-        <!-- 
+        <!--   <li class="active"><a href="${req}/listproduct">List Products</a></li> -->
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">List Products <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Page 1-1</a></li>
-            <li><a href="#">Page 1-2</a></li>
-            <li><a href="#">Page 1-3</a></li>
+          <c:forEach items="${cates}" var="cates">
+			<li><a href="${req}/listproduct/${cates.cid}"
+						class="btn btn-sm btn-primary">${cates.cname}</a></li>
+			</c:forEach>
           </ul>
         </li>
+        <!-- 
         <li><a href="#">Page 2</a></li>
         <li><a href="#">Page 3</a></li>
          -->
