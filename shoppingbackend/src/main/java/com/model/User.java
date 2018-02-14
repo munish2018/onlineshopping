@@ -21,20 +21,23 @@ public class User implements Serializable  {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private int id;
 	@Column(name = "first_name")
 	private String firstName;
 	@Column(name = "last_name")
 	private String lastName;
+	@Id
 	private String email;
 	@Column(name = "contact_number")
 	private String contactNumber;
-	private String role="user";
+	private String role="ROLE_USER";
 	private String password;
 	private boolean enabled = true;
+	private String shippingaddress;
+	private String billingaddress;
+	
+	
 	@Transient
 	private String confirmPassword;
 	
@@ -93,11 +96,17 @@ public class User implements Serializable  {
 		this.confirmPassword = confirmPassword;
 	}
 	
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", contactNumber=" + contactNumber + ", role=" + role + ", password=" + password + ", enabled="
-				+ enabled + "]";
+	public String getShippingaddress() {
+		return shippingaddress;
+	}
+	public void setShippingaddress(String shippingaddress) {
+		this.shippingaddress = shippingaddress;
+	}
+	public String getBillingaddress() {
+		return billingaddress;
+	}
+	public void setBillingaddress(String billingaddress) {
+		this.billingaddress = billingaddress;
 	}
 
 	

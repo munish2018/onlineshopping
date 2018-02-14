@@ -50,7 +50,14 @@
 							<td>Contact Number</td>
 							<td><input type=text name="contactNumber" Class="form-control" /></td>
 						</tr>
-						
+						<tr>
+							<td>Shipping Address</td>
+							<td><textarea rows="3" cols=""name="shippingaddress" Class="form-control"></textarea>
+						</tr>
+						<tr>
+							<td>Billing Address</td>
+							<td><textarea rows="3" cols=""name="billingaddress" Class="form-control"></textarea>
+						</tr>
 							<tr>
 							<td><input type="submit" value="Submit"
 								class="btn btn-sm btn-primary"
@@ -59,6 +66,8 @@
 						</tr>
 					</table>
 				</form>
+				<br/><br/><br/><br/>
+				
 				<!-- ends register form -->
 
 				<script type="text/javascript">

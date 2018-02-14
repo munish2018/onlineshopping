@@ -1,6 +1,7 @@
 package com.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -62,14 +63,29 @@ public class MainController {
 		return "index";
 	}
 	
-	@RequestMapping("/login")
+	@RequestMapping("/gotologin")
 	public String log()
 	{
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	      String name = auth.getName(); //get logged in username
-	      ModelAndView mv =new ModelAndView();
-	      mv.addObject("username", name);
-	    		return "login";
+			   return "login";
+	}
+	@RequestMapping("/login")
+	public String logg()
+	{
+			   return "login";
+	}
+	@RequestMapping("/loginsuccess")
+	public String loginsuccess(HttpSession httpSession) {
+			httpSession.setAttribute("loggedIn", true);
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("cates", c.list());
+			return "index";
+	}
+
+	@RequestMapping("/logout")
+	public String logou(HttpSession httpSession)
+	{
+		httpSession.setAttribute("loggedIn", false);
+		return "index";
 	}
 	
 	@RequestMapping("/error")

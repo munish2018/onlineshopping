@@ -36,9 +36,17 @@
          -->
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li class="active">
+        <c:if test='<%=(Boolean)session.getAttribute("loggedIn")!=null&&(Boolean)session.getAttribute("loggedIn")==true%>'>
+        <sec:authentication var="user" property="principal" />
+         <a> Welcome ${user.username}</a>
+        </c:if>
+        </li>
         <li class="active"><a href="${req}/register">Sign Up</a></li>
-        <li><a href="${req}/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        <li><a href="${req}/gotologin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <c:if test='<%=(Boolean)session.getAttribute("loggedIn")!=null&&(Boolean)session.getAttribute("loggedIn")==true%>'>
+        <li><a href="${req}/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        </c:if>
       </ul>
       </div>
   </div>

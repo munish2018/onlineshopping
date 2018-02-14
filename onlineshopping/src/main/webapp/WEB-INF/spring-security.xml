@@ -14,7 +14,7 @@
  					login-page="/login" 
  					username-parameter="username"
                      password-parameter="password" 
-                     authentication-success-forward-url="/"
+                     authentication-success-forward-url="/loginsuccess"
                      authentication-failure-forward-url="/error" 
                       />                       
               <security:access-denied-handler
