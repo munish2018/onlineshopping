@@ -6,10 +6,14 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.dao.CartDAO;
 import com.model.Cart;
 
+@Repository("cartDAO")
+@Transactional
 public class CartDAOImpl implements CartDAO {
 	
 	@Autowired
@@ -19,8 +23,7 @@ public class CartDAOImpl implements CartDAO {
 	{
 		this.sessionFactory=sessionFactory;
 	}
-	
-	
+		
 	@Override
 	public void insert(Cart cart) {
 		// TODO Auto-generated method stub
@@ -31,15 +34,16 @@ public class CartDAOImpl implements CartDAO {
 		}
 
 	@Override
-	public List<Cart> findcartbyid(String useremail) {
+	public List<Cart> findcartbyid(String uemail) {
 		// TODO Auto-generated method stub
 	Session session=sessionFactory.openSession();
 	List<Cart> cr=null;
 	try
 	{
 		session.beginTransaction();
-		cr=(List<Cart>)session.createQuery("from cart where useremail=:email").setString("email",useremail);
-		session.getTransaction();
+		cr=(List<Cart>)session.createQuery("from Cart where useremail=:email").setString("email",uemail).list();
+		session.getTransaction().commit();
+		return cr;
 		}
 	catch(HibernateException ex)
 	{
@@ -50,13 +54,13 @@ public class CartDAOImpl implements CartDAO {
 	}
 
 	@Override
-	public Cart getcartbyid(int cartid, String useremail) {
+	public Cart getcartbyid(int cartid, String uemail) {
 		// TODO Auto-generated method stub
 		Session session=sessionFactory.openSession();
 		Cart cr=null;
 		session.beginTransaction();
 		cr=(Cart)session.createQuery("from Cart where useremail=:email and cartproductid=:id")
-				.setString("email", useremail)
+				.setString("email", uemail)
 				.setInteger("id",cartid).uniqueResult();
 				session.getTransaction().commit();
 				return cr;

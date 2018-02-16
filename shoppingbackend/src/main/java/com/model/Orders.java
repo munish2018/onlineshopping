@@ -6,26 +6,25 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import org.springframework.stereotype.Component;
 
 @SuppressWarnings("unused") 
 @Entity
 @Component
-public class Order {
+public class Orders
+{
 
 	@Id
 	@GeneratedValue
 	private int orderid;
 	
-	@ManyToOne 
-	@JoinColumn(name="orderemail")
-	private User orderUserDetails;
-	
-	
-	private Double totprice;
-	private int totquantity;
+	private String orderemail;
+			
+	private String payment;
 	private Double total;
+	
 	
 	public int getOrderid() {
 		return orderid;
@@ -33,23 +32,12 @@ public class Order {
 	public void setOrderid(int orderid) {
 		this.orderid = orderid;
 	}
-	public User getOrderUserDetails() {
-		return orderUserDetails;
+	
+	public String getPayment() {
+		return payment;
 	}
-	public void setOrderUserDetails(User orderUserDetails) {
-		this.orderUserDetails = orderUserDetails;
-	}
-	public Double getTotprice() {
-		return totprice;
-	}
-	public void setTotprice(Double totprice) {
-		this.totprice = totprice;
-	}
-	public int getTotquantity() {
-		return totquantity;
-	}
-	public void setTotquantity(int totquantity) {
-		this.totquantity = totquantity;
+	public void setPayment(String payment) {
+		this.payment = payment;
 	}
 	public Double getTotal() {
 		return total;
@@ -57,4 +45,11 @@ public class Order {
 	public void setTotal(Double total) {
 		this.total = total;
 	}
+	public String getOrderemail() {
+		return orderemail;
+	}
+	public void setOrderemail(String orderemail) {
+		this.orderemail = orderemail;
+	}
+	
 }

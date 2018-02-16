@@ -30,10 +30,10 @@
 		<div class="panel-header" align="center">
 			<h1>Product Detail</h1>
 		</div>
-<form  method="post" modelAttribute="product" enctype="multipart/form-data">
+<form  action="<c:url value="/cart/addtocart" />" method="post" modelAttribute="product" enctype="multipart/form-data">
 			<table border="1" width="600">
 				<tr>
-				<td rowspan=5><img src="${f}/${product.imageurl}.jpg" width=400 height=400 /></td>
+				<td rowspan=5><img src="${f}/${product.imageurl}.jpg" name="imgname" width=400 height=400 /></td>
 					<td>Product ID</td>
 					<td><input type=text name="pid" value="${product.pid}"
 						Class="form-control" /></td>

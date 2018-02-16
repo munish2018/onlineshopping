@@ -20,29 +20,8 @@ public class CategoryDAOImpl implements CategoryDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	/*
-	 * private static List<Category> categories = new ArrayList<>(); static {
-	 * Category category = new Category(); category.setId(1);
-	 * category.setName("TV"); category.setDescription("description of TV");
-	 * category.setImageURL("cat1.png"); categories.add(category);
-	 * 
-	 * category = new Category(); category.setId(2); category.setName("Mobile");
-	 * category.setDescription("description of Mobile");
-	 * category.setImageURL("cat2.png"); categories.add(category);
-	 * 
-	 * category = new Category(); category.setId(3); category.setName("Laptop");
-	 * category.setDescription("description of Laptop");
-	 * category.setImageURL("cat3.png"); categories.add(category);
-	 * 
-	 * }
-	 */
-
 	@Override
 	public Category get(int id) {
-		/*
-		 * for (Category category : categories) { if (category.getId() == id)
-		 * return category; } return null;
-		 */
 		return sessionFactory.getCurrentSession().get(Category.class, Integer.valueOf(id));
 
 	}

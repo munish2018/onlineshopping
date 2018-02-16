@@ -7,6 +7,7 @@ public interface UserDAO {
 	// user related operation
 		User getByEmail(String email);
 		User get(int id);
-		boolean add(User user);	
+		boolean add(User user);
+		boolean update(User user);	
 	
 }

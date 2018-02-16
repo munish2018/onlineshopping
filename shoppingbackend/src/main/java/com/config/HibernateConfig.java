@@ -14,6 +14,13 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.model.Cart;
+import com.model.Category;
+import com.model.Orders;
+import com.model.Product;
+import com.model.Supplier;
+import com.model.User;
+
 @Configuration
 @ComponentScan(basePackages={"com.model"})
 @EnableTransactionManagement
@@ -52,9 +59,17 @@ public class HibernateConfig {
 			
 			System.out.println(" test3 ");
 			LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSource);
+			builder.scanPackages("com.model");
 			
 			builder.addProperties(getHibernateProperties());
-			builder.scanPackages("com.model");
+			builder.addAnnotatedClass(User.class);
+			builder.addAnnotatedClass(Supplier.class);
+			builder.addAnnotatedClass(Category.class);
+			builder.addAnnotatedClass(Product.class);
+			builder.addAnnotatedClass(Cart.class);
+			builder.addAnnotatedClass(Orders.class);
+			
+			
 			System.out.println(" test4 ");
 			return builder.buildSessionFactory();
 			
@@ -75,6 +90,8 @@ public class HibernateConfig {
 			properties.put("hibernate.format_sql", "true");
 			
 			properties.put("hibernate.hbm2ddl.auto", "update");
+			
+			
 			
 			System.out.println(" test6 ");
 			return properties;

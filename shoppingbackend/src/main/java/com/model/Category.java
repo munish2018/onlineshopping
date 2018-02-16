@@ -18,11 +18,11 @@ public class Category {
 	//@OneToMany(targetEntity=Product.class,fetch=FetchType.EAGER,mappedBy="category")	
 	//private Set<Product> products=new HashSet<Product>(0);
 	
-	@Override
+/*	@Override
 	public String toString() {
 		return "Category [cid=" + cid + ", cname=" + cname +  "]";
 	}
-
+*/
 	public int getCid() {
 		return cid;
 	}

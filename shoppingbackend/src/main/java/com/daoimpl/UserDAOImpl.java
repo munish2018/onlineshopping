@@ -52,5 +52,16 @@ public class UserDAOImpl implements UserDAO {
 			return false;
 		}
 	}
+	
+	@Override
+	public boolean update(User user) {
+		try {			
+			sessionFactory.getCurrentSession().update(user);			
+			return true;
+		}
+		catch(Exception ex) {
+			return false;
+		}
+	}
 
 }
