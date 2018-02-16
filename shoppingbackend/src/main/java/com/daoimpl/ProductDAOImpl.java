@@ -47,6 +47,7 @@ public class ProductDAOImpl implements ProductDAO {
 		session.beginTransaction();
 		li=session.createQuery("from Product where cid="+cid).list();
 		session.getTransaction().commit();
+		session.close();
 		return li;
 	}
 	@Override
@@ -57,6 +58,7 @@ public class ProductDAOImpl implements ProductDAO {
 		session.beginTransaction();
 		li=session.createQuery("from Product where sid="+sid).list();
 		session.getTransaction().commit();
+		session.close();
 		return li;
 	}
 	

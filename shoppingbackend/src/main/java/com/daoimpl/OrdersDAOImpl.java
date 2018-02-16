@@ -31,11 +31,11 @@ public class OrdersDAOImpl implements OrdersDAO {
 	
 	@Override
 	public void insert(Orders orders) {
-		// TODO Auto-generated method stub
 		try {
 			sessionFactory.getCurrentSession().persist(orders);
 			} 
 		catch (Exception ex) {
+			System.out.println(" Exception 2:"+ex);;
 			ex.printStackTrace();
 			}
 		}
@@ -54,6 +54,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 		else
 			System.out.println("order list  found");
 		session.getTransaction().commit();
+		session.close();
 			return ord;
 		}
 
@@ -73,7 +74,9 @@ public class OrdersDAOImpl implements OrdersDAO {
 		Orders li=null;
 		session.beginTransaction();
 		li=(Orders)session.createQuery("from Orders where orderemail='"+uemail+"'").uniqueResult();
+		System.out.println("email:"+uemail);
 		session.getTransaction().commit();
+		session.close();
 		return li;
 		}
 
@@ -87,6 +90,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 				.setString("email", useremail)
 				.setInteger("id",orderid).uniqueResult();
 				session.getTransaction().commit();
+				session.close();
 				return ord;
 	}
 
@@ -107,7 +111,8 @@ public class OrdersDAOImpl implements OrdersDAO {
 			sessionFactory.getCurrentSession().update(orders);
 			} 
 		catch (Exception ex) {
+			System.out.println(" Exception 1:"+ex);;
 			ex.printStackTrace();
 			}
-	}
+		}
 }

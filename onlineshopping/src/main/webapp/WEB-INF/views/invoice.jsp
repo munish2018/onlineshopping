@@ -29,6 +29,8 @@
 		<div class="panel-header" align="center">
 			<h1>Order Detail</h1>
 		</div>
+	<h1>Customer Detail</h1>	
+	<hr/>
 	 <table border="1" width="600">
 		<tr>
 				<td>Name</td>
@@ -44,7 +46,43 @@
 				<td><textarea  rows="3" name="billingaddress">${userdet.billingaddress}</textarea>
 					 </td>
 			</tr>
-	</table>	
+	</table>
+	<h1>Product Detail</h1>	
+	<hr/>	
+	<table class="table table-striped" border="1" align="center">
+			<tr>
+				<th>Cart Id</th>
+				<th>Product ID</th>
+				<th>Product Name</th>
+				<th>Product Price</th>
+				<th>Product Quantity</th>
+				<th>Image</th>
+				<th>&#160;</th>
+			</tr>
+			<% 
+			 double total=0;
+			  %>
+			<c:forEach items="${cartlist}" var="cartlist">
+				<tr>
+					<td>${cartlist.cartid}</td>
+					<td>${cartlist.cartProductId}</td>
+					<td>${cartlist.cartProductName}</td>
+					<td>${cartlist.cartPrice}</td>
+					<td>${cartlist.cartQuantity}</td>
+				   <td><img src="${f}/${cartlist.cartImage}" width=50 height=50></td>
+	            </tr>
+			</c:forEach>
+		</table>
+		<table border="1" width="600">
+		<tr>
+				<td>Payment Mode</td>
+				<td><input type=text name="Payment Mode :" value="${orddet.payment}" /></td>
+			</tr>
+		<tr>
+				<td>Total Payment </td>
+				<td><input type=text name="total" value="${orddet.total}" /></td>
+			</tr>
+	</table>
 	<br/><br/><br/>
 	<a href="${req}/cart/thanku" class="btn btn-sm btn-primary">Proceed</a>
 		<br/><br/><br/>

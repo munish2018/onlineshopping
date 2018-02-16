@@ -28,6 +28,7 @@
 <%@ include file="header.jsp"%>
 	<div class="panel pannel-default">
 		<div class="panel-header" align="center">
+			<br/><br/><br/><br/><br/>		
 			<h1> Thanks for Shopping with us !</h1>
 		</div>
 	</div>

@@ -36,7 +36,7 @@ public class MainController {
 	@Autowired
 	ProductDAO p;
 	
-	@RequestMapping(value={"/"})
+	@RequestMapping(value={"/","/index"})
 	public ModelAndView vwindex()
 	{
 		ModelAndView obj = new ModelAndView();
@@ -47,6 +47,7 @@ public class MainController {
 		return obj;
 	}
 
+		
 	@RequestMapping(value={"/register"})
 	public ModelAndView vwregis()
 	{
@@ -60,17 +61,23 @@ public class MainController {
 	@RequestMapping("/userLogged")
 	public String userLogged()
 	{
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("cates", c.list());
 		return "index";
 	}
 	
 	@RequestMapping("/gotologin")
 	public String log()
 	{
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("cates", c.list());
 			   return "login";
 	}
 	@RequestMapping("/login")
 	public String logg()
 	{
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("cates", c.list());
 			   return "login";
 	}
 	@RequestMapping("/loginsuccess")

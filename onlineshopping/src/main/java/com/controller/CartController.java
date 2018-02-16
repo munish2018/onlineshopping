@@ -127,6 +127,7 @@ public class CartController {
 		Principal principal=req.getUserPrincipal();
 		String useremail=principal.getName();
 		String paymode=req.getParameter("paymode");
+		System.out.println(" Payment Mode :"+paymode);
 		try
 		{
 		List<Cart> list=cartdao.findcartbyid(useremail);
@@ -181,8 +182,8 @@ public class CartController {
 		Principal principal=req.getUserPrincipal();
 		String useremail=principal.getName();
 		mv.addObject("userdet",userdao.getByEmail(useremail));
-		//mv.addObject("orddet",ordersdao.findorderbyid(useremail));
-		//mv.addObject("crdet",cartdao.findcartbyid(useremail));
+		mv.addObject("orddet",ordersdao.findorderbyid(useremail));
+		mv.addObject("cartlist",cartdao.findcartbyid(useremail));
 		return mv;
 	}
 	

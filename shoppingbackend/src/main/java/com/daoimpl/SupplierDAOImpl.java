@@ -29,6 +29,7 @@ public class SupplierDAOImpl implements SupplierDAO {
 	public List<Supplier> list() {
 		Session session = sessionFactory.openSession();
 		List<Supplier> list=session.createQuery("from Supplier").list();
+		session.close();
 		return list;
 
 	}

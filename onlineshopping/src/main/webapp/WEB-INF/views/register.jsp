@@ -62,7 +62,7 @@
 							<td><input type="submit" value="Submit"
 								class="btn btn-sm btn-primary"
 								onClick="alert('Data Saved Sucessfully');" /></td>
-							<td><input type="reset" value="Cancel" /></td>
+								<td><input type="reset" value="Cancel" /></td>
 						</tr>
 					</table>
 				</form>

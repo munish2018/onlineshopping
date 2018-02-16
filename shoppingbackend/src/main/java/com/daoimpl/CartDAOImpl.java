@@ -31,6 +31,7 @@ public class CartDAOImpl implements CartDAO {
 		session.beginTransaction();
 		session.persist(cart);
 		session.getTransaction().commit();
+		session.close();
 		}
 
 	@Override
@@ -43,6 +44,7 @@ public class CartDAOImpl implements CartDAO {
 		session.beginTransaction();
 		cr=(List<Cart>)session.createQuery("from Cart where useremail=:email").setString("email",uemail).list();
 		session.getTransaction().commit();
+		session.close();
 		return cr;
 		}
 	catch(HibernateException ex)
@@ -50,7 +52,11 @@ public class CartDAOImpl implements CartDAO {
 		ex.printStackTrace();
 		session.getTransaction().rollback();
 	}
-	return cr;
+	finally
+	{
+		session.close();
+	}
+		return cr;
 	}
 
 	@Override
@@ -63,6 +69,7 @@ public class CartDAOImpl implements CartDAO {
 				.setString("email", uemail)
 				.setInteger("id",cartid).uniqueResult();
 				session.getTransaction().commit();
+				session.close();
 				return cr;
 	}
 
@@ -74,6 +81,7 @@ public class CartDAOImpl implements CartDAO {
 		Cart cr=(Cart)session.get(Cart.class, cartid);
 		session.delete(cr);
 		session.getTransaction().commit();
+		session.close();
 	}
 
 	@Override
@@ -83,6 +91,7 @@ public class CartDAOImpl implements CartDAO {
 		session.beginTransaction();
 		session.update(cart);
 		session.getTransaction().commit();
+		session.close();
 	}
 
 }

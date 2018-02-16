@@ -48,7 +48,9 @@
 						placeholder="Please Enter Password...">
 				</div>
 				
-				<button type="submit" class="btn btn-default">Submit</button>
+				<button type="submit" class="btn btn-default">Sign IN</button>
+				<a href="${req}/register"
+						class="btn btn-sm btn-primary">Sign UP</a>
 				<input type="hidden"  name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			<p class="text-muted loginbottomtext">©shop</p>
 			</form>

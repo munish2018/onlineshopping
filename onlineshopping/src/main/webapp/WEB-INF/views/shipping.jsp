@@ -62,8 +62,13 @@
 	
 	<br/><br/>
 	<form action="<c:url value="/cart/orderprocess" />" method="post">
-		 Enter Payment Methods (COD/Net Banking):<input type=text name="paymode" Class="form-control" />
-			<br/><br/>
+		 Enter Payment Methods (COD/Net Banking):
+		         <select name="paymode" id="paymode">
+		         	<option value="">Select Any option</option>
+		         	<option value="Cash On Delivery">Cash On Delivery</option>
+		         	<option value="Internet Banking">Internet Banking</option>
+		         </select>
+		       <br/><br/>
 			<input type="submit" value="Process Order"	class="btn btn-sm btn-primary" />
 	</form> 
 		<br/><br/><br/><br/>	
