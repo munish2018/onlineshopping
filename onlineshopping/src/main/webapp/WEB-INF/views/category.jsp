@@ -55,13 +55,13 @@
 
 			<tr>
 				<td>Category ID</td>
-				<td><input type=text name="cid" value="${cate.cid}"
-					Class="form-control" /></td>
+				<td><input type=number name="cid" value="${cate.cid}"
+					Class="form-control" readonly/></td>
 			</tr>
 			<tr>
 				<td>Category Name</td>
 				<td><input type=text name="cname" value="${cate.cname}"
-					Class="form-control" /></td>
+					Class="form-control" required="required"/></td>
 			</tr>
 
 			<tr align="center">
@@ -74,6 +74,7 @@
 		</table>
 	</form>
 	</div>
+	<br/><br/><br/><br/>
 	<%@ include file="footer.jsp"%>
 	</body>
 	</html>

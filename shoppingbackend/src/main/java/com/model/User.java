@@ -2,21 +2,21 @@ package com.model;
 
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import org.hibernate.validator.constraints.NotBlank;
+import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 @Entity
 @Table(name = "user_detail")
 public class User implements Serializable  {
 
-	
 	/**
 	 * 
 	 */
@@ -32,6 +32,8 @@ public class User implements Serializable  {
 	@Column(name = "contact_number")
 	private String contactNumber;
 	private String role="ROLE_USER";
+	@NotNull
+	@Size(min = 5, max = 20)
 	private String password;
 	private boolean enabled = true;
 	private String shippingaddress;

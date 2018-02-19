@@ -55,17 +55,17 @@
 
 			<tr>
 				<td>Supplier ID</td>
-				<td><input type=text name="supid" value="${supp.supid}"
-					Class="form-control" /></td>
+				<td><input type=number name="supid" value="${supp.supid}"
+					Class="form-control" readonly/></td>
 			</tr>
 			<tr>
 				<td>Supplier Name</td>
 				<td><input type=text name="supname" value="${supp.supname}"
-					Class="form-control" /></td>
+					Class="form-control"  required="required"/></td>
 			</tr>
 
 			<tr align="center">
-				<td align="center"><input type="submit" value="Submit"
+				<td align="center"><input type="submit" value="Update"
 					class="btn btn-sm btn-primary"
 					onClick="alert('Data Updated Sucessfully');" /></td>
 				<td align="center"><input type="reset" value="Reset"
@@ -74,6 +74,7 @@
 		</table>
 	</form>
 	</div>
+	<br/><br/><br/><br/>
 	<%@ include file="footer.jsp"%>
 	</body>
 	</html>

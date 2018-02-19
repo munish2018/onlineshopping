@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="req" value="${pageContext.request.contextPath}" />
 <c:set var="f" value="file:///E:/DT jAN 18 TO APR 18/onlineshopping/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/onlineshopping/resources/images" />
-
+<spring:url value="/resources/images" var="images" />
 
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -24,14 +24,9 @@
 <script src="${js}/bootstrap.min.js"></script>
 <script src="${js}/registration.js"></script>
 </head>
-<body>
+<body background="${images}/thanks.jpg">
 <%@ include file="header.jsp"%>
-	<div class="panel pannel-default">
-		<div class="panel-header" align="center">
-			<br/><br/><br/><br/><br/>		
-			<h1> Thanks for Shopping with us !</h1>
-		</div>
-	</div>
 <%@ include file="footer.jsp"%>
 </body>
+<br/>
 </html>

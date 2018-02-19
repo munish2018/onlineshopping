@@ -87,23 +87,23 @@ body {
 					<table align="center">
 						<tr>
 							<td>Product Name</td>
-							<td><input type=text name="pname" Class="form-control" /></td>
+							<td><input type=text name="pname" Class="form-control"  required="required"/></td>
 						</tr>
 						<tr>
 							<td>Product Description</td>
-							<td><input type=text name="pdescription" Class="form-control" /></td>
+							<td><input type=text name="pdescription" Class="form-control" required="required"/></td>
 						</tr>
 						<tr>
 							<td>Unit Price</td>
-							<td><input type=text name="unitPrice" Class="form-control" /></td>
+							<td><input type=number name="unitPrice" Class="form-control"  min=0 max=25000 required="required"/></td>
 						</tr>
 						<tr>
 							<td>Quantity</td>
-							<td><input type=text name="quantity" Class="form-control" /></td>
+							<td><input type=number name="quantity" Class="form-control" min=0 max=50 required="required"/></td>
 						</tr>
 						<tr>
 							<td>Supplier Name</td>
-							<td><select name="sid" id="sid">
+							<td><select name="sid" id="sid" required="required">
 									<option value="">-----------Supplier--------</option>
 									<c:forEach items="${supps}" var="supps">
 										<option value=${supps.supid}>${supps.supname}</option>
@@ -113,7 +113,7 @@ body {
 							
 						<tr>
 							<td>Category Name</td>
-							<td><select   name="cid" id="cid" >
+							<td><select   name="cid" id="cid" required="required">
 									<option value="">-----------Category--------</option>
 									<c:forEach items="${cates}" var="cates">
 										<option value=${cates.cid}>${cates.cname}</option>
@@ -149,11 +149,11 @@ body {
 				<table border="1" width="600">
 					<tr>
 						<td>Category ID</td>
-						<td><input type=text name="cid" Class="form-control" /></td>
+						<td><input type="number" name="cid" Class="form-control" required="required"/></td>
 					</tr>
 					<tr>
 						<td>Category Name</td>
-						<td><input type=text name="cname" Class="form-control" /></td>
+						<td><input type=text name="cname" Class="form-control" required="required" /></td>
 					</tr>
 
 					<tr align="center">
@@ -182,11 +182,11 @@ body {
 
 					<tr>
 						<td>Supplier ID</td>
-						<td><input type=text name="supid" Class="form-control" /></td>
+						<td><input type="number" name="supid" Class="form-control" required="required"/></td>
 					</tr>
 					<tr>
 						<td>Supplier Name</td>
-						<td><input type=text name="supname" Class="form-control" /></td>
+						<td><input type=text name="supname" Class="form-control" required="required"/></td>
 					</tr>
 
 					<tr align="center">
@@ -198,7 +198,7 @@ body {
 					</tr>
 				</table>
 			</form>
-			<br /> <br />
+			<br/> <br/> <br/>
 			<center>
 						<h3>
 				<a href="${req}/admin/supplier">Manage Supplier Detail</a>

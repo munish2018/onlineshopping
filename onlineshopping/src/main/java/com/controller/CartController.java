@@ -50,11 +50,12 @@ public class CartController {
 		try
 		{
 			int pid=Integer.parseInt(req.getParameter("pid"));
-			String imagename=req.getParameter("imagename");
+			String imagename=req.getParameter("imgname");
 			String pname=req.getParameter("pname");
 			int quantity=Integer.parseInt(req.getParameter("quantity"));
 			double unitprice=Double.valueOf(req.getParameter("unitPrice"));
 			Cart cartexist=cartdao.getcartbyid(pid, useremail);
+			System.out.println("Image Name :"+imagename);
 			if(cartexist==null)
 			{
 				Cart cart=new Cart();
@@ -191,10 +192,25 @@ public class CartController {
 	public ModelAndView thanks(HttpServletRequest req) 
 	{
 		ModelAndView mv = new ModelAndView("thanks");
+		Principal principal=req.getUserPrincipal();
+		String useremail=principal.getName();
+		try
+		{
+		List<Cart> list=cartdao.findcartbyid(useremail);
+		for(Cart c:list)
+		{
+			cartdao.deletecart(c.getCartid());
+		}
+		Orders ords=null;
+		ords=ordersdao.findorderbyid(useremail);
+		ords.setTotal(0.0);
+		ordersdao.update(ords);
 		return mv;
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+			return mv;
+		}
 	}
-	
-	
-	
-	
 }

@@ -1,7 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="req" value="${pageContext.request.contextPath}" />
-
+<spring:url value="/resources/images" var="images" />
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -23,12 +23,11 @@
 <script src="${js}/registration.js"></script>
 
 </head>
-<body>
+<body background="${images}/error.jpg">
 	<%@ include file="header.jsp"%>
 	<div class="panel pannel-default">
 		<div class="panel-header" align="center">
-			<h1>  Un Authorized Access</h1>
-<h2> You Are Not Authorized To Access. Kindly Login Again!</h2>
+		<h2> You Are Not Authorized To Access. Kindly Login Again!</h2>
 		</div>
 </div>
 <%@ include file="footer.jsp"%>

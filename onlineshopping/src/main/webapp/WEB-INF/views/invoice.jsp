@@ -1,7 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="req" value="${pageContext.request.contextPath}" />
-
+<c:set var="f" value="file:///E:/DT jAN 18 TO APR 18/onlineshopping/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/onlineshopping/resources/images" />
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -34,16 +34,16 @@
 	 <table border="1" width="600">
 		<tr>
 				<td>Name</td>
-				<td><input type=text name="firstName" value="${userdet.firstName} ${userdet.lastName}" /></td>
+				<td><input type=text name="firstName" value="${userdet.firstName} ${userdet.lastName}" readonly/></td>
 			</tr>
 			<tr>
 				<td>Shipping Address</td>
-				<td><textarea  rows="3" name="shippingaddress">${userdet.shippingaddress}</textarea>
+				<td><textarea  rows="3" name="shippingaddress" readonly>${userdet.shippingaddress}</textarea>
 					</td>
 			</tr>
 			<tr>
 				<td>Billing Address</td>
-				<td><textarea  rows="3" name="billingaddress">${userdet.billingaddress}</textarea>
+				<td><textarea  rows="3" name="billingaddress" readonly>${userdet.billingaddress}</textarea>
 					 </td>
 			</tr>
 	</table>
@@ -56,7 +56,6 @@
 				<th>Product Name</th>
 				<th>Product Price</th>
 				<th>Product Quantity</th>
-				<th>Image</th>
 				<th>&#160;</th>
 			</tr>
 			<% 
@@ -69,18 +68,17 @@
 					<td>${cartlist.cartProductName}</td>
 					<td>${cartlist.cartPrice}</td>
 					<td>${cartlist.cartQuantity}</td>
-				   <td><img src="${f}/${cartlist.cartImage}" width=50 height=50></td>
-	            </tr>
+				   </tr>
 			</c:forEach>
 		</table>
 		<table border="1" width="600">
 		<tr>
 				<td>Payment Mode</td>
-				<td><input type=text name="Payment Mode :" value="${orddet.payment}" /></td>
+				<td><input type=text name="Payment Mode :" value="${orddet.payment}"  readonly /></td>
 			</tr>
 		<tr>
 				<td>Total Payment </td>
-				<td><input type=text name="total" value="${orddet.total}" /></td>
+				<td><input type=text name="total" value="${orddet.total}" readonly/></td>
 			</tr>
 	</table>
 	<br/><br/><br/>

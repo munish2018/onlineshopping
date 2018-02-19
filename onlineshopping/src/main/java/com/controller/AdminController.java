@@ -178,6 +178,8 @@ public class AdminController {
 		System.out.println("  Product  update ");
 		System.out.println("Product id :" + product.getPid());
 		System.out.println("Product name :" + product.getPname());
+		product.setQuantity(Integer.parseInt(request.getParameter("quantity")));
+		product.setUnitPrice(Double.valueOf(request.getParameter("unitPrice")));
 		product.setCid(Integer.parseInt(request.getParameter("cid")));
 		product.setPid(Integer.parseInt(request.getParameter("pid")));
 		String imgpath=request.getSession().getServletContext().getRealPath("/resources/images/");

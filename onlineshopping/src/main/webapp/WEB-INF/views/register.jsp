@@ -31,32 +31,32 @@
 					<table align="center">
 						<tr>
 							<td>E Mail </td>
-							<td><input type=text name="email" Class="form-control" /></td>
+							<td><input type="email" name="email" Class="form-control" required="required"/></td>
 						</tr>
 						<tr>
 							<td>Password </td>
 							<td><input type=password name="password"
-								Class="form-control" /></td>
+								Class="form-control" required="required" /></td>
 						</tr>
 						<tr>
 							<td>First Name</td>
-							<td><input type=text name="firstName" Class="form-control" /></td>
+							<td><input type=text name="firstName" Class="form-control" required="required"/></td>
 						</tr>
 						<tr>
 							<td>Last Name</td>
-							<td><input type=text name="lastName" Class="form-control" /></td>
+							<td><input type=text name="lastName" Class="form-control" required="required" /></td>
 						</tr>
 						<tr>
 							<td>Contact Number</td>
-							<td><input type=text name="contactNumber" Class="form-control" /></td>
+							<td><input type=number name="contactNumber" Class="form-control"  pattern="[0-9]{10}" required="required"/></td>
 						</tr>
 						<tr>
 							<td>Shipping Address</td>
-							<td><textarea rows="3" cols=""name="shippingaddress" Class="form-control"></textarea>
+							<td><textarea rows="3" cols=""name="shippingaddress" Class="form-control" required="required"></textarea>
 						</tr>
 						<tr>
 							<td>Billing Address</td>
-							<td><textarea rows="3" cols=""name="billingaddress" Class="form-control"></textarea>
+							<td><textarea rows="3" cols=""name="billingaddress" Class="form-control" required="required"></textarea>
 						</tr>
 							<tr>
 							<td><input type="submit" value="Submit"

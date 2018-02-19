@@ -33,33 +33,36 @@
 <form  action="<c:url value="/cart/addtocart" />" method="post" modelAttribute="product" enctype="multipart/form-data">
 			<table border="1" width="600">
 				<tr>
-				<td rowspan=5><img src="${f}/${product.imageurl}.jpg" name="imgname" width=400 height=400 /></td>
+				<td rowspan=6><img src="${f}/${product.imageurl}.jpg"  width=400 height=400 /></td>
+				  
 					<td>Product ID</td>
 					<td><input type=text name="pid" value="${product.pid}"
-						Class="form-control" /></td>
+						Class="form-control" readonly/></td>
 										</tr>
 				<tr>
 					<td>Product Name</td>
 					<td><input type=text name="pname" value="${product.pname}"
-						Class="form-control" /></td>
+						Class="form-control" readonly/></td>
 				</tr>
+				<tr><td><input type="hidden"  name="imgname"  value="${product.imageurl}"/></td></tr>
 				<tr>
 					<td>Product Description</td>
 					<td><input type=text name="pdescription"
-						value="${product.pdescription}" Class="form-control" /></td>
+						value="${product.pdescription}" Class="form-control" readonly /></td>
+				</tr>
+				<tr>
+					<td>Product Unit price</td>
+					<td><input type=text name="unitPrice"
+						value="${product.unitPrice}" Class="form-control"  readonly /></td>
 				</tr>
 				<tr>
 					<td>Product Quantity</td>
 					<td><input type=text name="quantity"
 						value="${product.quantity}" Class="form-control" /></td>
 				</tr>
-				<tr>
-					<td>Product Unit price</td>
-					<td><input type=text name="unitPrice"
-						value="${product.unitPrice}" Class="form-control" /></td>
-				</tr>
+				
 				<tr align="center">
-					<td colspan="2" align="center"><input type="submit" value="Add To Cart"
+					<td colspan="3" align="center"><input type="submit" value="Add To Cart"
 						class="btn btn-sm btn-primary"/></td>
 									</tr>
 			</table>

@@ -32,23 +32,18 @@
 <form action="<c:url value="/cart/updateaddr" />" method="post" modelAttribute="useraddr">
 		<table border="1" width="600">
 		<tr>
-				<td>User Name</td>
-				<td><input type=text name="firstName" value="${useraddr.firstName} ${useraddr.lastName} "
-					Class="form-control" /></td>
-			</tr>
-			<tr>
-				<td>Contact Number</td>
-				<td><input type=text name="contactNumber" value="${useraddr.contactNumber}"
-					Class="form-control" /></td>
+				<td>Customer Name</td>
+				<td><input type=text name="Name" value="${useraddr.firstName} ${useraddr.lastName}"
+					Class="form-control" readonly/></td>
 			</tr>
 			<tr>
 				<td>Shipping Address</td>
-				<td><textarea  rows="3" name="shippingaddress" Class="form-control" >${useraddr.shippingaddress}</textarea>
+				<td><textarea  rows="3" name="shippingaddress" Class="form-control" required="required">${useraddr.shippingaddress}</textarea>
 					</td>
 			</tr>
 			<tr>
 				<td>Billing Address</td>
-				<td><textarea  rows="3" name="billingaddress"  Class="form-control">${useraddr.billingaddress}</textarea>
+				<td><textarea  rows="3" name="billingaddress"  Class="form-control" required="required">${useraddr.billingaddress}</textarea>
 					 </td>
 			</tr>
 			<tr>
@@ -63,7 +58,7 @@
 	<br/><br/>
 	<form action="<c:url value="/cart/orderprocess" />" method="post">
 		 Enter Payment Methods (COD/Net Banking):
-		         <select name="paymode" id="paymode">
+		         <select name="paymode" id="paymode" required="required">
 		         	<option value="">Select Any option</option>
 		         	<option value="Cash On Delivery">Cash On Delivery</option>
 		         	<option value="Internet Banking">Internet Banking</option>

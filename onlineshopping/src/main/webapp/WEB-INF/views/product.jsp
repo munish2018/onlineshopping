@@ -54,32 +54,32 @@
 			<table border="1" width="600">
 				<tr>
 					<td>Product ID</td>
-					<td><input type=text name="pid" value="${product.pid}"
-						Class="form-control" /></td>
+					<td><input type=number name="pid" value="${product.pid}"
+						Class="form-control" readonly/></td>
 				</tr>
 				<tr>
 					<td>Product Name</td>
 					<td><input type=text name="pname" value="${product.pname}"
-						Class="form-control" /></td>
+						Class="form-control"  required="required"/></td>
 				</tr>
 				<tr>
 					<td>Product Description</td>
 					<td><input type=text name="pdescription"
-						value="${product.pdescription}" Class="form-control" /></td>
+						value="${product.pdescription}" Class="form-control" required="required"/></td>
 				</tr>
 				<tr>
 					<td>Product Quantity</td>
 					<td><input type=text name="quantity"
-						value="${product.quantity}" Class="form-control" /></td>
+						value="${product.quantity}" Class="form-control" min=0 max=50  required="required"/></td>
 				</tr>
 				<tr>
 					<td>Product Unit price</td>
 					<td><input type=text name="unitPrice"
-						value="${product.unitPrice}" Class="form-control" /></td>
+						value="${product.unitPrice}" Class="form-control" min=0 max=25000 required="required"/></td>
 				</tr>
 				<tr>
 					<td>Supplier Name</td>
-					<td><select name="sid" id="sid">
+					<td><select name="sid" id="sid" required="required">
 							<option value="">-----------Supplier--------</option>
 							<c:forEach items="${supps}" var="supps">
 								<option value=${supps.supid}>${supps.supname}</option>
@@ -88,7 +88,7 @@
 				</tr>
 				<tr>
 					<td>Category Name</td>
-					<td><select name="cid" id="cid">
+					<td><select name="cid" id="cid" required="required">
 							<option value="">-----------Category--------</option>
 							<c:forEach items="${cates}" var="cates">
 								<option value=${cates.cid}>${cates.cname}</option>
@@ -99,16 +99,11 @@
 					<tr>
 						<td>Image</td>
 						<td><input class="form-control" type="file" name="file"
-							accept="image/*"></td>
+							accept="image/*" required="required"></td>
 					</tr>
-				<tr>
-					<td>Product Image</td>
-					<td><input type=text name="imageurl"
-						value="${product.imageurl}" Class="form-control" /></td>
-				</tr>
 				</div>
 				<tr align="center">
-					<td align="center"><input type="submit" value="Submit"
+					<td align="center"><input type="submit" value="Update"
 						class="btn btn-sm btn-primary"
 						onClick="alert('Data Updated Sucessfully');" /></td>
 					<td align="center"><input type="reset" value="Reset"
@@ -116,6 +111,7 @@
 				</tr>
 			</table>
 		</form>
+		<br/><br/><br/><br/>
 	</div>
 	<%@ include file="footer.jsp"%>
 </body>

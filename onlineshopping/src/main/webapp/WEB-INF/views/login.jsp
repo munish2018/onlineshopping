@@ -21,10 +21,6 @@
 </head>
 <body>
  	<%@ include file="header.jsp"%>
-	<% 
-	String un="${username}";
-	session.setAttribute("username",un);
-	%>
 	<div class="login" align="center">
 			<h1 class="loginheading">Login</h1>
 			<table align="center">
@@ -36,25 +32,28 @@
 			</td>
 			</tr>
 			</table>
+			<div align="center"> 
 			<form action="${pageContext.request.contextPath }/login" class="form-signin" method="post">
 					<div class="form-group emailInput has-feedback">
 					<label for="email">Email</label> 
 					<input type="email"	class="form-control" name="username" id="username"
-						placeholder="Please Enter E Mail ID...">
+						placeholder="Please Enter E Mail ID..." required="required" >
 				</div>
 				<div class="form-group nameInput has-feedback">
 					<label for="name">Password</label> <input type="password" 
 						class="form-control" name="password" id="password"
-						placeholder="Please Enter Password...">
+						placeholder="Please Enter Password..." required="required" maxlength="30">
 				</div>
 				
-				<button type="submit" class="btn btn-default">Sign IN</button>
+				<button type="submit" class="btn btn-sm btn-primary">Sign IN</button>
 				<a href="${req}/register"
 						class="btn btn-sm btn-primary">Sign UP</a>
 				<input type="hidden"  name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			<p class="text-muted loginbottomtext">©shop</p>
 			</form>
 			</div>
+			</div>
+			<br/><br/><br/><br/>
 	<%@ include file="footer.jsp"%>
 </body>
 </html>
