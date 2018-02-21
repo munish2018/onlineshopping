@@ -3,7 +3,7 @@
 <c:set var="req" value="${pageContext.request.contextPath}" />
 <c:set var="f" value="file:///E:/DT jAN 18 TO APR 18/onlineshopping/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/onlineshopping/resources/images" />
 
-
+<c:set var="img" value="/resources/images" />
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -45,7 +45,7 @@
 					<td>${products.pid}</td>
 					<td>${products.pname}</td>
 					<td>${products.pdescription}</td>
-					<td><img src="${f}/${products.imageurl}.jpg" width=40 height=40/></td>
+					<td><img src="${req}/resources/images/${products.imageurl}.jpg" width=40 height=40/></td>
 					<td><a href="${req}/listproductbypid/${products.pid}"
 						class="btn btn-sm btn-primary">View</a>&#160;</td>
 				</tr>

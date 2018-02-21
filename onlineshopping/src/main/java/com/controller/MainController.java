@@ -1,17 +1,18 @@
 package com.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dao.CategoryDAO;
@@ -147,16 +148,12 @@ public class MainController {
 		obj.addObject("errorDescription","You are not Authorized to view this page !");
 		return obj;
 	}
-	
 	@RequestMapping(value = "/listproduct", method = RequestMethod.GET)
 	public ModelAndView listprod() {
 		ModelAndView mv = new ModelAndView("listproduct");
 		mv.addObject("title", "Product");
 		mv.addObject("userClicklistProduct", true);
 		mv.addObject("products", p.list());
-		mv.addObject("supps", s.list());
-		mv.addObject("cates", c.list());
-		mv.addObject("product", new Product());
 		return mv;
 	}
 	@RequestMapping(value = "/listproduct/{cid}", method = RequestMethod.GET)
@@ -166,18 +163,17 @@ public class MainController {
 		mv.addObject("cates", c.list());
 		return mv;
 	}
-	
 	@RequestMapping(value = "/listproductbypid/{pid}", method = RequestMethod.GET)
 	public ModelAndView getprodbyid(@PathVariable("pid") int pid) {
 		ModelAndView mv = new ModelAndView("dispproduct");
 		mv.addObject("product", p.get(pid));
-		mv.addObject("supps", s.list());
-		mv.addObject("cates", c.list());
-		mv.addObject("cates", c.list());
 		mv.addObject("products", p.list());
 		return mv;
 	}
-	
-	
+	@RequestMapping("/displayallprod")
+	public @ResponseBody List<Product> getallproduct()
+	{
+		return p.list();
+	}
 }
  

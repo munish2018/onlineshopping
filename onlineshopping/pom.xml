@@ -14,7 +14,7 @@
 	</properties>
 
 	<dependencies>
-	<!-- Spring security -->
+		<!-- Spring security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
@@ -35,7 +35,7 @@
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>${spring.security.version}</version>
 		</dependency>
-	
+
 		<!-- link backend with frontend -->
 		<dependency>
 			<groupId>com.niitmrt</groupId>

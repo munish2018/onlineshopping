@@ -99,7 +99,7 @@ body {
 						</tr>
 						<tr>
 							<td>Quantity</td>
-							<td><input type=number name="quantity" Class="form-control" min=0 max=50 required="required"/></td>
+							<td><input type=number name="quantity" Class="form-control" min=0 max=500 required="required"/></td>
 						</tr>
 						<tr>
 							<td>Supplier Name</td>

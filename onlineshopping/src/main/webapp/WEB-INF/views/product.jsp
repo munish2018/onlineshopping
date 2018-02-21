@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="req" value="${pageContext.request.contextPath}" />
 
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -70,7 +69,7 @@
 				<tr>
 					<td>Product Quantity</td>
 					<td><input type=text name="quantity"
-						value="${product.quantity}" Class="form-control" min=0 max=50  required="required"/></td>
+						value="${product.quantity}" Class="form-control" min=0 max=500  required="required"/></td>
 				</tr>
 				<tr>
 					<td>Product Unit price</td>

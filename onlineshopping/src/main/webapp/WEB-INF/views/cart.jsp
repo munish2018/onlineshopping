@@ -52,7 +52,7 @@ private String cartImage;
 					<td>${cartlist.cartProductName}</td>
 					<td>${cartlist.cartPrice}</td>
 					<td>${cartlist.cartQuantity}</td>
-					<td><img src="${f}/${cartlist.cartImage}.jpg" width=50 height=50></td>
+					<td><img src="${req}/resources/images/${cartlist.cartImage}.jpg" width=50 height=50></td>
 					<td><a href="${req}/cart/deletecart/${cartlist.cartid}" class="btn btn-sm btn-primary">Remove</a>&#160;</td>
 	            </tr>
 			</c:forEach>
